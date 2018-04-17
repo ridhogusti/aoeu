@@ -9,6 +9,7 @@ import { login } from '../../actions/authActions';
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       identifier: '',
       password: '',
@@ -29,9 +30,11 @@ class LoginForm extends React.Component {
         password,
       };
       this.setState({ errors: {}, isLoading: true });
+      console.log(data, 'test');
       this.props.login(data).then(
         (res) => this.props.history.push('/'),
-        (err) => this.setState({ errors: err.response.data.errors, isLoading: false })
+        (err) => this.setState({ errors: err.response, isLoading: false })
+        // (err) => console.log(err.response)
       );
     }
   }
@@ -53,10 +56,10 @@ class LoginForm extends React.Component {
     const { errors, identifier, password, isLoading } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit} encType="multipart/data">
+      <form onSubmit={this.onSubmit}>
         <h1>Login</h1>
 
-        { errors.form && <div className="alert alert-danger">{errors.form}</div> }
+        { errors.data && <div className="alert alert-danger">{errors.data}</div> }
 
         <TextFieldGroup
           field="identifier"

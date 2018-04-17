@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import map from 'lodash/map';
-import classnames from 'classnames';
-import timezones from '../../data/timezones';
+// import map from 'lodash/map';
+// import classnames from 'classnames';
+// import timezones from '../../data/timezones';
 import validateInput from '../validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
 
@@ -14,6 +14,7 @@ class SignupForm extends React.Component {
       username: '',
       email: '',
       password: '',
+      akses: '',
       passwordConfirmation: '',
       timezone: '',
       errors: {},
@@ -42,14 +43,16 @@ class SignupForm extends React.Component {
         username,
         email,
         password,
+        akses: 'umat',
       };
       console.log(data);
-      const fd = new FormData();
-      fd.append('username', username);
-      fd.append('email', email);
-      fd.append('password', password);
-      console.log(fd);
-      this.props.userSignupRequest(fd).then(
+      // const fd = new FormData();
+      // fd.append('username', username);
+      // fd.append('email', email);
+      // fd.append('password', password);
+      // fd.append('akses', 'umat');
+      // console.log(fd);
+      this.props.userSignupRequest(data).then(
         () => {
           this.props.addFlashMessage({
             type: 'success',
@@ -92,9 +95,9 @@ class SignupForm extends React.Component {
 
   render() {
     const { errors } = this.state;
-    const options = map(timezones, (val, key) =>
-      <option key={val} value={val}>{key}</option>
-    );
+    // const options = map(timezones, (val, key) =>
+    //   <option key={val} value={val}>{key}</option>
+    // );
     return (
       <form onSubmit={this.onSubmit} encType="multipart/form-data" >
         <h1>Join our community!</h1>

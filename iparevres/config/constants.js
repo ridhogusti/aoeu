@@ -6,7 +6,7 @@ const WHITELIST = {
     update: ['title', 'text', 'image'],
   },
   users: {
-    create: ['email', 'username', 'password'],
+    create: ['email', 'username', 'password', 'akses'],
   },
 };
 

@@ -6,6 +6,11 @@ import { userSignupRequest, isUserExists } from '../../actions/signupActions';
 import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class SignupPage extends React.Component {
+  componentWillMount() {
+    if (this.props.isAuthenticated) {
+      this.props.history.push('/');
+    } 
+  }
   render() {
     const { userSignupRequest, addFlashMessage, isUserExists } = this.props;
     return (
@@ -22,10 +27,15 @@ class SignupPage extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+}
 SignupPage.propTypes = {
   userSignupRequest: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
   isUserExists: PropTypes.func.isRequired,
 };
 
-export default connect(null, { userSignupRequest, addFlashMessage, isUserExists })(SignupPage);
+export default connect(mapStateToProps, { userSignupRequest, addFlashMessage, isUserExists })(SignupPage);

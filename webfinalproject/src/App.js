@@ -21,6 +21,7 @@ class App extends Component {
         <NavigationBar />
         <FlashMessagesList />
         <Switch>
+          {/* <Route path="/signup" component={requireAuth(SignupPage)} /> */}
           <Route path="/signup" component={SignupPage} />
           <Route exact path='/' component={Greetings} />
           <Route path="/login" component={LoginPage} />

@@ -59,7 +59,7 @@ export const validation = {
  */
 export async function create(req, res, next) {
   console.log('test');
-  console.log(req.fields)
+  console.log(req.body);
 
   const body = filteredBody(req.body, constants.WHITELIST.users.create);
   try {

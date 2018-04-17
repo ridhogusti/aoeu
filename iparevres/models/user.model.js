@@ -32,6 +32,9 @@ const UserSchema = new Schema(
       trim: true,
       unique: true,
     },
+    akses: {
+      type: String,
+    },
     password: {
       type: String,
       required: [true, 'Password is required!'],

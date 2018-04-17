@@ -11,11 +11,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/aoeu', (err, result) => {
+mongoose.connect('mongodb://localhost:27017/aoeu', (err) => {
   if (err) {
     console.error(err);
   } else {
-    console.log('Koneksi berhasil', result);
+    console.log('Koneksi berhasil');
   }
 });
 
