@@ -1,13 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authActions';
 
 class NavigationBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      linkActive: '',
+    };
+    this.logout = this.logout.bind(this);
+  }
   logout(e) {
     e.preventDefault();
     this.props.logout();
+  }
+  activeLink = (input) => {
+    this.setState({ linkActive: input });
   }
 
   render() {
@@ -15,7 +25,7 @@ class NavigationBar extends React.Component {
 
     const userLinks = (
       <ul className="navbar-nav ml-auto nav-flex-icons">
-        <li className="nav-item"> <a href="#" onClick={this.logout.bind(this)} className="nav-link waves-effect waves-light" >Logout</a> </li>
+        <li className="nav-item"> <a href="#" onClick={this.logout} className="nav-link waves-effect waves-light" >Logout</a> </li>
       </ul>
     );
 
@@ -28,7 +38,7 @@ class NavigationBar extends React.Component {
     );
 
     return (
-      <nav className="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+      <nav className="mb-1 navbar navbar-expand-lg fixed-top navbar-dark default-color">
         <Link to="/" className="navbar-brand">Red Dice</Link>
         <button
           className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -38,20 +48,20 @@ class NavigationBar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link to="/artikel" className="nav-link waves-effect waves-light"> Artikel </Link>
+            <li className={this.state.linkActive === '/artikel' ? 'nav-item active' : 'nav-item'}>
+              <Link replace to="/artikel" onClick={() => this.activeLink('/artikel')} className="nav-link waves-effect waves-light"> Artikel </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/video" className="nav-link waves-effect waves-light"> Video </Link>
+            <li className={this.state.linkActive === '/video' ? 'nav-item active' : 'nav-item'}>
+              <Link to="/video" onClick={() => this.activeLink('/video')} className="nav-link waves-effect waves-light"> Video </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/audio" className="nav-link waves-effect waves-light"> Audio </Link>
+            <li className={this.state.linkActive === '/audio' ? 'nav-item active' : 'nav-item'}>
+              <Link to="/audio" onClick={() => this.activeLink('/audio')} className="nav-link waves-effect waves-light"> Audio </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/jadwal" className="nav-link waves-effect waves-light"> Jadwal Kegiatan </Link>
+            <li className={this.state.linkActive === '/jadwal' ? 'nav-item active' : 'nav-item'}>
+              <Link to="/jadwal" onClick={() => this.activeLink('/jadwal')} className="nav-link waves-effect waves-light"> Jadwal Kegiatan </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/ustadz" className="nav-link waves-effect waves-light"> List Ustadz </Link>
+            <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
+              <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -72,10 +82,10 @@ class NavigationBar extends React.Component {
   }
 }
 
-NavigationBar.propTypes = {
-  auth: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
-};
+// NavigationBar.propTypes = {
+//   auth: PropTypes.object.isRequired,
+//   logout: PropTypes.func.isRequired,
+// };
 
 function mapStateToProps(state) {
   return {

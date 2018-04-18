@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class UstadzList extends Component {
   render() {
@@ -22,8 +23,14 @@ class UstadzList extends Component {
             </a>
           </div>
           {/* Button */}
-          <a className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light">
+
+          <a href="/namaustadz" className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light">
+            {/* <Link
+            to="/namaustadz" 
+            className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"
+          >  */}
             <i className="fa fa-chevron-right pl-1" />
+            {/* </Link> */}
           </a>
           {/* Card content */}
           <div className="card-body">

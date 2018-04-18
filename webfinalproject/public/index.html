@@ -57,6 +57,20 @@ $('#carousel-example-1z').on('slide.bs.carousel', function () {
   // do something…
 })
 
+$(function () {
+    $(".sticky").sticky({
+        topSpacing: 81
+        , zIndex: 3
+        // , stopper: "#aoeu"
+    });
+
+    $(".nsticky").sticky({
+        topSpacing: 125
+        , zIndex: 2
+        // , stopper: "#aoeu2"
+    });
+});
+
     </script>
   </body>
 </html>
