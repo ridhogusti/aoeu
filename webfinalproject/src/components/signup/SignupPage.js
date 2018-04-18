@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SignupForm from './SignupForm';
+import './stylesignup.css';
 import { userSignupRequest, isUserExists } from '../../actions/signupActions';
 import { addFlashMessage } from '../../actions/flashMessages.js';
 
@@ -14,15 +15,20 @@ class SignupPage extends React.Component {
   render() {
     const { userSignupRequest, addFlashMessage, isUserExists } = this.props;
     return (
-      <div className="row">
-        <div className="col-md-4 col-md-offset-4">
-          <SignupForm
-            isUserExists={isUserExists}
-            userSignupRequest={userSignupRequest}
-            addFlashMessage={addFlashMessage}
-          />
+      <div className="break">
+        <div className="row">
+          <div className="col-4" />
+          <div className="col-4">
+            <SignupForm
+              isUserExists={isUserExists}
+              userSignupRequest={userSignupRequest}
+              addFlashMessage={addFlashMessage}
+            />
+          </div>
+          <div className="col-4" />
         </div>
       </div>
+      
     );
   }
 }

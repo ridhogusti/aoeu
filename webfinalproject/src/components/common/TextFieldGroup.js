@@ -2,19 +2,23 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const TextFieldGroup = ({ field, value, label, error, type, onChange, checkUserExists }) => (
-  <div className={classnames('form-group', { 'has-error': error })}>
-    <label className="control-label">{label}</label>
-    <input
+const TextFieldGroup = ({ id, field, value, label, error, type, onChange, checkUserExists, icon }) => (
+  <div className={classnames('md-form', { 'has-error': error })}>
+    <i className={icon} />
+    <input 
+      id={id} 
+      className="form-control"
       onChange={onChange}
       onBlur={checkUserExists}
       value={value}
       type={type}
       name={field}
-      className="form-control"
     />
-    {error && <span className="help-block">{error}</span>}
-  </div>);
+    <label htmlFor={id}>{label}</label>
+
+    {error && <span className="red-text">{error}</span>}
+  </div>
+);
 
 TextFieldGroup.propTypes = {
   field: PropTypes.string.isRequired,

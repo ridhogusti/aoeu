@@ -95,69 +95,128 @@ class SignupForm extends React.Component {
 
   render() {
     const { errors } = this.state;
-    // const options = map(timezones, (val, key) =>
-    //   <option key={val} value={val}>{key}</option>
-    // );
     return (
-      <form onSubmit={this.onSubmit} encType="multipart/form-data" >
-        <h1>Join our community!</h1>
 
-        <TextFieldGroup
-          error={errors.username}
-          label="Username"
-          onChange={this.onChange}
-          checkUserExists={this.checkUserExists}
-          value={this.state.username}
-          field="username"
-        />
+      <div className="card">
+        <div className="card-body">
+          {/* Header*/}
+          <div className="form-header default-color">
+            <h3><i className="fa fa-user" /> Register:</h3>
+          </div>
+          {/* Body*/}
+          <form onSubmit={this.onSubmit}>
 
-        <TextFieldGroup
-          error={errors.email}
-          label="Email"
-          onChange={this.onChange}
-          checkUserExists={this.checkUserExists}
-          value={this.state.email}
-          field="email"
-        />
+            <TextFieldGroup
+              id="username"
+              error={errors.username}
+              label="Username"
+              onChange={this.onChange}
+              checkUserExists={this.checkUserExists}
+              value={this.state.username}
+              field="username"
+              icon="fa fa-user prefix grey-text"
+            />
 
-        <TextFieldGroup
-          error={errors.password}
-          label="Password"
-          onChange={this.onChange}
-          value={this.state.password}
-          field="password"
-          type="password"
-        />
+            <TextFieldGroup
+              id="email"
+              error={errors.email}
+              label="Email"
+              onChange={this.onChange}
+              checkUserExists={this.checkUserExists}
+              value={this.state.email}
+              field="email"
+              icon="fa fa-envelope prefix grey-text"
+            />
 
-        <TextFieldGroup
-          error={errors.passwordConfirmation}
-          label="Password Confirmation"
-          onChange={this.onChange}
-          value={this.state.passwordConfirmation}
-          field="passwordConfirmation"
-          type="password"
-        />
+            <TextFieldGroup
+              id="password"
+              error={errors.password}
+              label="Password"
+              onChange={this.onChange}
+              value={this.state.password}
+              field="password"
+              type="password"
+              icon="fa fa-lock prefix grey-text"
+            />
 
-        {/* <div className={classnames('form-group', { 'has-error': errors.timezone })}>
-          <label className="control-label">Timezone</label>
-          <select
-            className="form-control"
-            name="timezone"
-            onChange={this.onChange}
-            value={this.state.timezone}
-          >
-            <option value="" disabled>Choose Your Timezone</option>
-            {options}
-          </select>
-          {errors.timezone && <span className="help-block">{errors.timezone}</span>}
-        </div> */}
+            <TextFieldGroup
+              id="passwordConfirmation"
+              error={errors.passwordConfirmation}
+              label="Password Confirmation"
+              onChange={this.onChange}
+              value={this.state.passwordConfirmation}
+              field="passwordConfirmation"
+              type="password"
+              icon="fa fa-lock prefix grey-text"
+            />
 
-        <div className="form-group">
-          <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
-            Sign up
-          </button>
+            <div className="text-center">
+              <button className="btn btn-deep-orange waves-effect waves-light">Sign up</button>
+            </div>
+          </form>
+          
         </div>
-      </form>
+      </div>
+
+      // <form onSubmit={this.onSubmit} encType="multipart/form-data" >
+      //   <h1>Join our community!</h1>
+
+      //   <TextFieldGroup
+      //     error={errors.username}
+      //     label="Username"
+      //     onChange={this.onChange}
+      //     checkUserExists={this.checkUserExists}
+      //     value={this.state.username}
+      //     field="username"
+      //   />
+
+      //   <TextFieldGroup
+      //     error={errors.email}
+      //     label="Email"
+      //     onChange={this.onChange}
+      //     checkUserExists={this.checkUserExists}
+      //     value={this.state.email}
+      //     field="email"
+      //   />
+
+      //   <TextFieldGroup
+      //     error={errors.password}
+      //     label="Password"
+      //     onChange={this.onChange}
+      //     value={this.state.password}
+      //     field="password"
+      //     type="password"
+      //   />
+
+      //   <TextFieldGroup
+      //     error={errors.passwordConfirmation}
+      //     label="Password Confirmation"
+      //     onChange={this.onChange}
+      //     value={this.state.passwordConfirmation}
+      //     field="passwordConfirmation"
+      //     type="password"
+      //   />
+
+      //   {/* <div className={classnames('form-group', { 'has-error': errors.timezone })}>
+      //     <label className="control-label">Timezone</label>
+      //     <select
+      //       className="form-control"
+      //       name="timezone"
+      //       onChange={this.onChange}
+      //       value={this.state.timezone}
+      //     >
+      //       <option value="" disabled>Choose Your Timezone</option>
+      //       {options}
+      //     </select>
+      //     {errors.timezone && <span className="help-block">{errors.timezone}</span>}
+      //   </div> */}
+
+      //   <div className="form-group">
+      //     <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
+      //       Sign up
+      //     </button>
+      //   </div>
+      // </form>
     );
   }
 }

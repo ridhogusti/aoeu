@@ -56,30 +56,69 @@ class LoginForm extends React.Component {
     const { errors, identifier, password, isLoading } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Login</h1>
+      // <div className="col-md-6 mb-r pb-5">
+      <div className="card">
+        <div className="card-body">
+          {/* Header*/}
+          <div className="form-header default-color">
+            <h3><i className="fa fa-lock" /> Login:</h3>
+          </div>
 
-        { errors.data && <div className="alert alert-danger">{errors.data}</div> }
+          { errors.data && <div className="alert alert-danger">{errors.data}</div> }
+          {/* Body*/}
+          <form onSubmit={this.onSubmit}>
 
-        <TextFieldGroup
-          field="identifier"
-          label="Username / Email"
-          value={identifier}
-          error={errors.identifier}
-          onChange={this.onChange}
-        />
+            <TextFieldGroup
+              id='email'
+              field="identifier"
+              label="Email"
+              value={identifier}
+              error={errors.identifier}
+              onChange={this.onChange}
+              icon="fa fa-envelope prefix grey-text"
+            />
 
-        <TextFieldGroup
-          field="password"
-          label="Password"
-          value={password}
-          error={errors.password}
-          onChange={this.onChange}
-          type="password"
-        />
+            <TextFieldGroup
+              id='password'
+              field="password"
+              label="Password"
+              value={password}
+              error={errors.password}
+              onChange={this.onChange}
+              type="password"
+              icon="fa fa-lock prefix grey-text"
+            />
+            <div className="text-center">
+              <button className="btn btn-default waves-effect waves-light" disabled={isLoading}>Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
 
-        <div className="form-group"><button className="btn btn-primary btn-lg" disabled={isLoading}>Login</button></div>
-      </form>
+      // <form onSubmit={this.onSubmit}>
+      //   <h1>Login</h1>
+
+      //   { errors.data && <div className="alert alert-danger">{errors.data}</div> }
+
+      //   <TextFieldGroup
+      //     field="identifier"
+      //     label="Email"
+      //     value={identifier}
+      //     error={errors.identifier}
+      //     onChange={this.onChange}
+      //   />
+
+      //   <TextFieldGroup
+      //     field="password"
+      //     label="Password"
+      //     value={password}
+      //     error={errors.password}
+      //     onChange={this.onChange}
+      //     type="password"
+      //   />
+
+      //   <div className="form-group"><button className="btn btn-primary btn-lg" disabled={isLoading}>Login</button></div>
+      // </form>
     );
   }
 }

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import { Route, IndexRoute } from 'react-router';
 import './App.css';
-
 import Greetings from './components/Greetings';
 import SignupPage from './components/signup/SignupPage';
 import LoginPage from './components/login/LoginPage';
@@ -17,8 +16,9 @@ class App extends Component {
   render() {
     return (
       // <Route path="/" component={App}>
-      <div className="container">
+      <div className="container-fluid">
         <NavigationBar />
+        <div className="break-a" />
         <FlashMessagesList />
         <Switch>
           {/* <Route path="/signup" component={requireAuth(SignupPage)} /> */}

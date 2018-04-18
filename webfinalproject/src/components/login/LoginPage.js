@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import LoginForm from './LoginForm';
+import './stylelogin.css';
 
 class LoginPage extends React.Component {
   // constructor(props) {
@@ -15,11 +16,17 @@ class LoginPage extends React.Component {
   }
   render() {
     return (
-      <div className="row">
-        <div className="col-md-4 col-md-offset-4">
-          <LoginForm />
+      <div className="break">
+        <div className="row">
+          <div className="col-4" />
+          <div className="col-4">
+            <LoginForm />
+          </div>
+          <div className="col-4" />
+        
         </div>
       </div>
+      
     );
   }
 }

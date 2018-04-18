@@ -127,6 +127,10 @@ address@1.0.3, address@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/address/-/address-1.0.3.tgz#b5f50631f8d6cec8bd20c963963afb55e06cbce9"
 
+adminbsb-materialdesign@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/adminbsb-materialdesign/-/adminbsb-materialdesign-1.0.5.tgz#309e1c8134ddbe013ed789480bbea83d719da5f3"
+
 ajv-keywords@^1.0.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
