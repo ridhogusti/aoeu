@@ -7,6 +7,11 @@ import Greetings from './components/Greetings';
 import SignupPage from './components/signup/SignupPage';
 import LoginPage from './components/login/LoginPage';
 import NewEventPage from './components/events/NewEventPage';
+import ArtikelPage from './components/Artikel/ArtikelPage';
+import VideoPage from './components/Video/VideoPage';
+import AudioPage from './components/Audio/AudioPage';
+import JadwalPage from './components/Jadwal/JadwalPage';
+import UstadzPage from './components/Ustadz/UstadzPage';
 
 import requireAuth from './utils/requireAuth';
 import NavigationBar from './components/NavigationBar';
@@ -26,6 +31,11 @@ class App extends Component {
           <Route exact path='/' component={Greetings} />
           <Route path="/login" component={LoginPage} />
           <Route path="/new-event" component={requireAuth(NewEventPage)} />
+          <Route path="/artikel" component={ArtikelPage} />
+          <Route path="/video" component={VideoPage} />
+          <Route path="/audio" component={AudioPage} />
+          <Route path="/jadwal" component={JadwalPage} />
+          <Route path="/ustadz" component={UstadzPage} />
         </Switch>
       </div>
         

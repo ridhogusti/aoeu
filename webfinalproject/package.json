@@ -10,6 +10,7 @@
     "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
+    "react-audioplayer": "^0.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",

@@ -39,15 +39,19 @@ class NavigationBar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link waves-effect waves-light" href="#">Home
-                <span className="sr-only">(current)</span>
-              </a>
+              <Link to="/artikel" className="nav-link waves-effect waves-light"> Artikel </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link waves-effect waves-light" href="#">Features</a>
+              <Link to="/video" className="nav-link waves-effect waves-light"> Video </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link waves-effect waves-light" href="#">Pricing</a>
+              <Link to="/audio" className="nav-link waves-effect waves-light"> Audio </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/jadwal" className="nav-link waves-effect waves-light"> Jadwal Kegiatan </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/ustadz" className="nav-link waves-effect waves-light"> List Ustadz </Link>
             </li>
             <li className="nav-item dropdown">
               <a
