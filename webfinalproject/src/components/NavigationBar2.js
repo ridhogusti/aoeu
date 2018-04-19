@@ -50,49 +50,70 @@ class NavigationBar extends React.Component {
           }}
           className="sticky"
         />
-
-        <nav
-          className="nsticky mb-1 navbar navbar-expand-lg navbar-dark default-color"
-        >
-          <Link to="/" className="navbar-brand">Red Dice</Link>
-          <button
-            className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
-            aria-expanded="false" aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
-            <ul className="navbar-nav mr-auto">
-              <li className={this.state.linkActive === '/artikel' ? 'nav-item active' : 'nav-item'}>
-                <Link to="/artikel" onClick={() => this.activeLink('/artikel')} className="nav-link waves-effect waves-light"> Artikel </Link>
-              </li>
-              <li className={this.state.linkActive === '/video' ? 'nav-item active' : 'nav-item'}>
-                <Link to="/video" onClick={() => this.activeLink('/video')} className="nav-link waves-effect waves-light"> Video </Link>
-              </li>
-              <li className={this.state.linkActive === '/audio' ? 'nav-item active' : 'nav-item'}>
-                <Link to="/audio" onClick={() => this.activeLink('/audio')} className="nav-link waves-effect waves-light"> Audio </Link>
-              </li>
-              <li className={this.state.linkActive === '/jadwal' ? 'nav-item active' : 'nav-item'}>
-                <Link to="/jadwal" onClick={() => this.activeLink('/jadwal')} className="nav-link waves-effect waves-light"> Jadwal Kegiatan </Link>
-              </li>
-              <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
-                <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                >Dropdown</a>
-                <div className="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
-                  <a className="dropdown-item waves-effect waves-light" href="#">Action</a>
-                  <a className="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                  <a className="dropdown-item waves-effect waves-light" href="#">Something else here</a>
-                </div>
-              </li>
-            </ul>
-          
-            { isAuthenticated ? userLinks : guestLinks }
+        {/* Avatar*/}
+        <div className="row">
+        
+          <div className="col-3">
+            
+            <div className="col-8">
+              <div className="nsticky2 avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" className="rounded-circle img-fluid" />
+              </div>
+            </div>
+       
           </div>
-        </nav>
+
+          <div
+            className="col-12"
+            style={{
+              top: '-145px',
+            }}
+          >
+          
+            <nav
+              className="nsticky mb-1 navbar navbar-expand-lg navbar-dark default-color"
+            >
+              <button
+                className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                aria-expanded="false" aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
+                <ul className=" mr-auto" />
+                <ul className="navbar-nav mr-auto">
+                  <li className={this.state.linkActive === '/artikel' ? 'nav-item active' : 'nav-item'}>
+                    <Link to="/artikel" onClick={() => this.activeLink('/artikel')} className="nav-link waves-effect waves-light"> Artikel </Link>
+                  </li>
+                  <li className={this.state.linkActive === '/video' ? 'nav-item active' : 'nav-item'}>
+                    <Link to="/video" onClick={() => this.activeLink('/video')} className="nav-link waves-effect waves-light"> Video </Link>
+                  </li>
+                  <li className={this.state.linkActive === '/audio' ? 'nav-item active' : 'nav-item'}>
+                    <Link to="/audio" onClick={() => this.activeLink('/audio')} className="nav-link waves-effect waves-light"> Audio </Link>
+                  </li>
+                  <li className={this.state.linkActive === '/jadwal' ? 'nav-item active' : 'nav-item'}>
+                    <Link to="/jadwal" onClick={() => this.activeLink('/jadwal')} className="nav-link waves-effect waves-light"> Jadwal Kegiatan </Link>
+                  </li>
+                  <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
+                    <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>
+                  </li>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    >Dropdown</a>
+                    <div className="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
+                      <a className="dropdown-item waves-effect waves-light" href="#">Action</a>
+                      <a className="dropdown-item waves-effect waves-light" href="#">Another action</a>
+                      <a className="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                    </div>
+                  </li>
+                </ul>
+                <ul className="mr-auto" />
+                <ul className="mr-auto" />
+              </div>
+            </nav> 
+          </div>
+        </div>
+        
       </div>
       
     );

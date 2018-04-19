@@ -12,3 +12,11 @@ header,
 .intro-2 {
   height: 700px;
 }
+
+.avatar {
+  margin-top: -65px;
+  width: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 5px solid #fff
+}

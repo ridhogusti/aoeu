@@ -74,7 +74,6 @@ class NavigationBar extends React.Component {
               </div>
             </li>
           </ul>
-          
           { isAuthenticated ? userLinks : guestLinks }
         </div>
       </nav>
