@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import './scriptartikel';
 import UstadzList from './UstadzList';
+import { fetchUstadzs } from '../../actions/ustadz';
 
 class UstadzPage extends Component {
   // constructor(props) {
   //   super(props);
   // }
   componentDidMount() {
+    this.props.fetchUstadzs();
     window.scrollTo(0, 0);
   }
   render() {
+    const { ustadzs } = this.props;
+    console.log(ustadzs);
     return (
       <div>
         <div
@@ -74,11 +78,10 @@ class UstadzPage extends Component {
             marginLeft: '8%',
           }}
         >
-          <UstadzList />
-          <UstadzList />
-          <UstadzList />
-          <UstadzList />
-          <UstadzList />
+
+          {
+            ustadzs.map(ustadz => <UstadzList ustadz={ustadz} key={ustadz._id} />)
+          }
           
         </div>
 
@@ -133,7 +136,8 @@ class UstadzPage extends Component {
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
+    ustadzs: state.ustadzs.data,
   };
 }
 
-export default connect(mapStateToProps, {})(UstadzPage);
+export default connect(mapStateToProps, { fetchUstadzs })(UstadzPage);

@@ -34,7 +34,7 @@ class SignupForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { username, email, password } = this.state;
+    const { username, email, password, name } = this.state;
 
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
@@ -43,15 +43,10 @@ class SignupForm extends React.Component {
         username,
         email,
         password,
-        akses: 'umat',
+        akses: 'ustadz',
+        name,
       };
       console.log(data);
-      // const fd = new FormData();
-      // fd.append('username', username);
-      // fd.append('email', email);
-      // fd.append('password', password);
-      // fd.append('akses', 'umat');
-      // console.log(fd);
       this.props.userSignupRequest(data).then(
         () => {
           this.props.addFlashMessage({
@@ -106,6 +101,16 @@ class SignupForm extends React.Component {
           {/* Body*/}
           <form onSubmit={this.onSubmit}>
 
+            <TextFieldGroup
+              id="name"
+              error={errors.name}
+              label="Name"
+              onChange={this.onChange}
+              checkUserExists={this.checkUserExists}
+              value={this.state.name}
+              field="name"
+              icon="fa fa-user prefix grey-text"
+            />
             <TextFieldGroup
               id="username"
               error={errors.username}

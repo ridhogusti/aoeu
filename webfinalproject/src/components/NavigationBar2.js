@@ -1,17 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authActions';
+import { fetchArtikels } from '../actions/artikel';
 import './styleNavigationBar2.css';
 
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      linkActive: '',
+      linkActive: window.location.pathname,
     };
     this.logout = this.logout.bind(this);
+  }
+  componentDidMount() {
+    this.props.fetchArtikels('adihidayat');
   }
   logout(e) {
     e.preventDefault();
@@ -23,18 +26,16 @@ class NavigationBar extends React.Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
+    console.log(this.props.artikels.length);
 
     const userLinks = (
       <ul className="navbar-nav ml-auto nav-flex-icons">
-        <li className="nav-item"> <a href="#" onClick={this.logout} className="nav-link waves-effect waves-light" >Logout</a> </li>
+        <li className="nav-item"> <Link to="/namaustadz/tanyajawab" className="nav-link waves-effect waves-light" >Tanya & Jawab</Link> </li>
       </ul>
     );
 
     const guestLinks = (
-      <ul className="navbar-nav ml-auto nav-flex-icons">
-        <li className="nav-item"> <Link to="/signup" className="nav-link waves-effect waves-light" >Sign up</Link> </li>
-        <li className="nav-item"> <Link to="/login" className="nav-link waves-effect waves-light" >Login</Link> </li>
-      </ul>
+      <ul className="navbar-nav ml-auto nav-flex-icons" />
       
     );
 
@@ -44,33 +45,42 @@ class NavigationBar extends React.Component {
           style={{
             width: '100%',
             marginTop: '-25px',
-            height: '75px',
-            background: '#1da1f2',
-            marginBottom: '-25px',
+            height: '100px',
+            background: '#009688',
+            position: 'fixed',
+            zIndex: '3',
           }}
-          className="sticky"
         />
         {/* Avatar*/}
-        <div className="row">
+        <div
+          className="row"
+        >
         
           <div className="col-3">
-            
-            <div className="col-8">
-              <div className="nsticky2 avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" className="rounded-circle img-fluid" />
+            <div
+              className="col-3"
+              style={{
+                marginTop: '125px',
+                position: 'fixed',
+                zIndex: '4',
+              }}
+            >
+              <div className="avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" className="rounded-circle img-fluid" />
               </div>
             </div>
-       
           </div>
 
           <div
             className="col-12"
             style={{
-              top: '-145px',
+              marginTop: '75px',
+              position: 'fixed',
+              zIndex: '3',
             }}
           >
           
             <nav
-              className="nsticky mb-1 navbar navbar-expand-lg navbar-dark default-color"
+              className=" mb-1 navbar navbar-expand-lg navbar-dark teal darken-2"
             >
               <button
                 className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -81,8 +91,16 @@ class NavigationBar extends React.Component {
               <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
                 <ul className=" mr-auto" />
                 <ul className="navbar-nav mr-auto">
-                  <li className={this.state.linkActive === '/artikel' ? 'nav-item active' : 'nav-item'}>
-                    <Link to="/artikel" onClick={() => this.activeLink('/artikel')} className="nav-link waves-effect waves-light"> Artikel </Link>
+                  <li className={this.state.linkActive === '/namaustadz/artikel' ? 'nav-item active' : 'nav-item'}>
+                    <Link 
+                      to="/namaustadz/artikel" 
+                      onClick={() => this.activeLink('/namaustadz/artikel')} className="nav-link text-center waves-effect waves-light"
+                    > Artikel 
+                    
+                      <br />
+                        250
+
+                    </Link>
                   </li>
                   <li className={this.state.linkActive === '/video' ? 'nav-item active' : 'nav-item'}>
                     <Link to="/video" onClick={() => this.activeLink('/video')} className="nav-link waves-effect waves-light"> Video </Link>
@@ -91,21 +109,15 @@ class NavigationBar extends React.Component {
                     <Link to="/audio" onClick={() => this.activeLink('/audio')} className="nav-link waves-effect waves-light"> Audio </Link>
                   </li>
                   <li className={this.state.linkActive === '/jadwal' ? 'nav-item active' : 'nav-item'}>
-                    <Link to="/jadwal" onClick={() => this.activeLink('/jadwal')} className="nav-link waves-effect waves-light"> Jadwal Kegiatan </Link>
+                    <Link
+                      to="/jadwal" onClick={() => this.activeLink('/jadwal')} 
+                      className="nav-link waves-effect waves-light"
+                    > Jadwal Kegiatan </Link>
                   </li>
                   <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
                     <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                    >Dropdown</a>
-                    <div className="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
-                      <a className="dropdown-item waves-effect waves-light" href="#">Action</a>
-                      <a className="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                      <a className="dropdown-item waves-effect waves-light" href="#">Something else here</a>
-                    </div>
-                  </li>
+                  { isAuthenticated ? userLinks : guestLinks }
                 </ul>
                 <ul className="mr-auto" />
                 <ul className="mr-auto" />
@@ -128,7 +140,8 @@ class NavigationBar extends React.Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
+    artikels: state.artikels.data,
   };
 }
 
-export default connect(mapStateToProps, { logout })(NavigationBar);
+export default connect(mapStateToProps, { logout, fetchArtikels })(NavigationBar);

@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authActions';
 
@@ -8,7 +8,7 @@ class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      linkActive: '',
+      linkActive: window.location.pathname,
     };
     this.logout = this.logout.bind(this);
   }
@@ -38,7 +38,7 @@ class NavigationBar extends React.Component {
     );
 
     return (
-      <nav className="mb-1 navbar navbar-expand-lg fixed-top navbar-dark default-color">
+      <nav className="mb-1 navbar navbar-expand-lg fixed-top navbar-dark teal darken-2 ">
         <Link to="/" className="navbar-brand">Red Dice</Link>
         <button
           className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"

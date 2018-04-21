@@ -2,15 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './scriptartikel';
 import ArtikelList from './ArtikelList';
+import { fetchAllArtikels, limitArtikelUmum } from '../../actions/artikel';
 
 class ArtikelPage extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      limit: 0,
+    };
+  }
   componentDidMount() {
+    this.props.fetchAllArtikels();
     window.scrollTo(0, 0);
   }
+
+  limitArtikell = () => {
+    console.log('hai');
+    this.props.limitArtikelUmum(this.state.limit);
+    this.setState({ limit: this.state.limit + 4 });
+  }
   render() {
+    const { artikels } = this.props;
     return (
       <div>
         <div
@@ -73,11 +85,15 @@ class ArtikelPage extends Component {
             marginLeft: '8%',
           }}
         >
+
+          {
+            artikels.map(artikel => <ArtikelList artikel={artikel} key={artikel._id} />)
+          }
+          {/* <ArtikelList />
           <ArtikelList />
           <ArtikelList />
           <ArtikelList />
-          <ArtikelList />
-          <ArtikelList />
+          <ArtikelList /> */}
           
         </div>
 
@@ -91,34 +107,7 @@ class ArtikelPage extends Component {
 
           <div className="col-4" />
           <div className="col-4">
-            <nav className="my-4">
-              <ul className="pagination pagination-circle pg-blue mb-0">
-                {/* First*/}
-                <li className="page-item disabled"><a className="page-link waves-effect waves-effect">First</a></li>
-                {/* Arrow left*/}
-                <li className="page-item disabled">
-                  <a className="page-link waves-effect waves-effect" aria-label="Previous">
-                    <span aria-hidden="true">«</span>
-                    <span className="sr-only">Previous</span>
-                  </a>
-                </li>
-                {/* Numbers*/}
-                <li className="page-item active"><a className="page-link waves-effect waves-effect">1</a></li>
-                <li className="page-item"><a className="page-link waves-effect waves-effect">2</a></li>
-                <li className="page-item"><a className="page-link waves-effect waves-effect">3</a></li>
-                <li className="page-item"><a className="page-link waves-effect waves-effect">4</a></li>
-                <li className="page-item"><a className="page-link waves-effect waves-effect">5</a></li>
-                {/* Arrow right*/}
-                <li className="page-item">
-                  <a className="page-link waves-effect waves-effect" aria-label="Next">
-                    <span aria-hidden="true">»</span>
-                    <span className="sr-only">Next</span>
-                  </a>
-                </li>
-                {/* First*/}
-                <li className="page-item"><a className="page-link waves-effect waves-effect">Last</a></li>
-              </ul>
-            </nav>
+            <button type="button" onClick={this.limitArtikell} className="btn btn-default">Load More</button>
           </div> 
           <div className="col-4" />
 
@@ -132,7 +121,8 @@ class ArtikelPage extends Component {
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
+    artikels: state.artikels.data,
   };
 }
 
-export default connect(mapStateToProps, {})(ArtikelPage);
+export default connect(mapStateToProps, { fetchAllArtikels, limitArtikelUmum })(ArtikelPage);

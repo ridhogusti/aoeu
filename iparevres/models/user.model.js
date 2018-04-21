@@ -63,6 +63,16 @@ UserSchema.pre('save', function (next) {
   return next();
 });
 
+UserSchema.statics = {
+
+  listUstadz({ skip = 0, limit = 10 } = {}) {
+    return this.find()
+      .sort({ createAt: -1 })
+      .skip(skip)
+      .limit(limit);
+  },
+};
+
 UserSchema.methods = {
   /**
    * Favorites actions
@@ -137,6 +147,10 @@ UserSchema.methods = {
     return jwt.sign(
       {
         _id: this._id,
+        username: this.username,
+        akses: this.akses,
+        email: this.email,
+        name: this.name,
       },
       constants.JWT_SECRET,
     );
@@ -151,7 +165,9 @@ UserSchema.methods = {
   toAuthJSON() {
     return {
       _id: this._id,
+      username: this.username,
       token: `JWT ${this.createToken()}`,
+      akses: this.akses,
     };
   },
 
@@ -164,6 +180,14 @@ UserSchema.methods = {
   toJSON() {
     return {
       _id: this._id,
+      username: this.username,
+    };
+  },
+
+  toJSON2() {
+    return {
+      _id: this._id,
+      name: this.name,
       username: this.username,
     };
   },

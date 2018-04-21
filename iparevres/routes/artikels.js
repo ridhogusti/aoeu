@@ -20,15 +20,19 @@ const router = express.Router();
  * CRUD
  */
 
-router.get('/', authJwt, ArtikelController.getList);
-router.get('/:id', authJwt, ArtikelController.getById);
+// router.get('/', authJwt, ArtikelController.getList);
+router.get('/:username', ArtikelController.getByUsername);
+router.get('/ambil/:id', ArtikelController.getById);
+router.get('/:limit/umum', ArtikelController.limitUmum);
+router.get('/:limit/:username', ArtikelController.limit);
+router.get('/', ArtikelController.getList);
 router.post(
   '/',
   authJwt,
   // validate(ArtikelController.validation.create),
   ArtikelController.create,
 );
-router.patch(
+router.put(
   '/:id',
   authJwt,
   // validate(ArtikelController.validation.update),

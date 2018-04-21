@@ -3,7 +3,7 @@ import HTTPStatus from 'http-status';
 import * as UserController from '../controllers/user.controller';
 
 import * as AuthenticationController from '../controllers/authentication.controller';
-import { authLocal } from '../services/auth';
+import { authJwt, authLocal } from '../services/auth';
 import APIError from '../services/error';
 import logErrorService from '../services/log';
 
@@ -15,6 +15,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('respond with a resource');
 });
+
+router.get('/ustadz', UserController.getUstadz);
 
 router.post('/signup', 
   // validate(UserController.validation.create),

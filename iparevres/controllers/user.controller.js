@@ -70,3 +70,24 @@ export async function create(req, res, next) {
     return next(e);
   }
 }
+
+export async function getUstadz(req, res, next) {
+  try {
+    const promise = await Promise.all([
+      User.listUstadz({ skip: req.query.skip, limit: req.query.limit }),
+    ]);
+    const ustadzs = promise[0].reduce((arr, ustadz) => {
+      arr.push({
+        ...ustadz.toJSON2(),
+      });
+      return arr;
+    }, []);
+    // console.log(ustadzs, 'data bro');
+    return res.status(HTTPStatus.OK).json(
+      ustadzs
+    );
+  } catch (err) {
+    err.status = HTTPStatus.BAD_REQUEST;
+    return next(err);
+  }
+}

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 class UstadzList extends Component {
   render() {
+    const { ustadz } = this.props;
+    const urlUstadz = `${ustadz.username}/artikel`;
     return (
       <div
         style={{
@@ -24,18 +26,18 @@ class UstadzList extends Component {
           </div>
           {/* Button */}
 
-          <a href="/namaustadz" className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light">
-            {/* <Link
-            to="/namaustadz" 
+          {/* <a href="/namaustadz/artikel" className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"> */}
+          <Link
+            to={urlUstadz} 
             className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"
-          >  */}
+          > 
             <i className="fa fa-chevron-right pl-1" />
-            {/* </Link> */}
-          </a>
+          </Link>
+          {/* </a> */}
           {/* Card content */}
           <div className="card-body">
             {/* Title */}
-            <h4 className="card-title">Ustdaz Abdul Somad</h4>
+            <h4 className="card-title">{ustadz.name}</h4>
             {/* Text */}
           </div>
           {/* Card footer */}

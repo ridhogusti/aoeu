@@ -16,7 +16,8 @@ import UstadzPage from './components/Ustadz/UstadzPage';
 import requireAuth from './utils/requireAuth';
 import NavigationBar from './components/NavigationBar';
 import FlashMessagesList from './components/flash/FlashMessagesList';
-import UstadzApp from './components/UstadzApp';
+import UstadzApp from './UstadzApp';
+import ArtikelDetail from './components/Artikel/ArtikelDetail';
 
 class App extends Component {
   render() {
@@ -32,12 +33,13 @@ class App extends Component {
           <Route exact path='/' component={Greetings} />
           <Route path="/login" component={LoginPage} />
           <Route path="/new-event" component={requireAuth(NewEventPage)} />
+          <Route path="/artikel/detail/:id" component={ArtikelDetail} />
           <Route path="/artikel" component={ArtikelPage} />
           <Route path="/video" component={VideoPage} />
           <Route path="/audio" component={AudioPage} />
           <Route path="/jadwal" component={JadwalPage} />
           <Route path="/ustadz" component={UstadzPage} />
-          <Route path="/namaustadz" component={UstadzApp} />
+          <Route path="/:username/artikel" component={UstadzApp} />
         </Switch>
       </div>
         

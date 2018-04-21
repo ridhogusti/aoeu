@@ -27,10 +27,21 @@ const ArtikelSchema = new Schema(
       unique: true,
     },
     author: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: [true, 'Author is required'],
+      _id: {
+        type: Schema.Types.ObjectId,
+      },
+      name: {
+        type: String,
+      },
+      username: {
+        type: String,
+      },
     },
+    // author: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'User',
+    //   required: [true, 'Author is required'],
+    // },
   },
   { timestamps: true }
 );
@@ -47,22 +58,50 @@ ArtikelSchema.pre('validate', function (next) {
 ArtikelSchema.statics = {
   // tambah artikel
 
-  createArtikel(args, authorId) {
+  createArtikel(args, authorId, authorName, authorUsername) {
     return this.create({
       ...args,
-      author: authorId,
+      author: {
+        _id: authorId,
+        name: authorName,
+        username: authorUsername,
+      },
     });
   },
 
   // ambil semua artikel
-  list({ skip = 0, limit = 10 } = {}) {
+  list({ skip = 0, limit = 4 } = {}) {
     return this.find()
-      .sort({ createAt: -1 })
+      .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(limit)
-      .populate('author');
+      .limit(limit);
   },
 
+  listById({ skip = 0, limit = 10 } = {}, id) {
+    console.log(id, 'iasnoeu');
+    return this.find({ _id: mongoose.Types.ObjectId(id) })
+      .sort({ createAt: -1 })
+      .skip(skip)
+      .limit(limit);
+  },
+  listByUsername({ skip = 0, limit = 4 } = {}, username) {
+    return this.find({ 'author.username': username })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+  },
+  listLimit(limit, username) {
+    return this.find({ 'author.username': username })
+      .sort({ createdAt: -1 })
+      .skip(4 + limit)
+      .limit(4);
+  },
+  listLimitUmum(countDoc, limit) {
+    return this.find()
+      .sort({ createdAt: -1 })
+      .skip(4 + limit)
+      .limit(4);
+  },
 };
 
 ArtikelSchema.methods = {
@@ -76,8 +115,13 @@ ArtikelSchema.methods = {
       title: this.title,
       text: this.text,
       image: this.image,
-      author: this.author,
+      author: {
+        _id: this.author._id,
+        name: this.author.name,
+        username: this.author.username,
+      },
       createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
     };
   },
 };

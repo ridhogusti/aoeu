@@ -49,6 +49,5 @@ export const validation = {
  */
 export async function login(req, res, next) {
   res.status(HTTPStatus.OK).json(req.user.toAuthJSON());
-
   return next();
 }
