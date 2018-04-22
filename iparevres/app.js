@@ -20,6 +20,7 @@ mongoose.connect('mongodb://localhost:27017/aoeu', (err) => {
 });
 
 const artikels = require('./routes/artikels');
+const videos = require('./routes/videos');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -53,6 +54,7 @@ app.use(formidable({
   // multiples: true, // req.files to be arrays of files 
 }));
 app.use('/artikels', artikels);
+app.use('/videos', videos);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

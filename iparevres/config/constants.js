@@ -5,6 +5,11 @@ const WHITELIST = {
     create: ['title', 'text', 'image'],
     update: ['title', 'text', 'image'],
   },
+
+  videos: {
+    create: ['title', 'video'],
+    update: ['title', 'video'],
+  },
   users: {
     create: ['email', 'username', 'password', 'akses', 'name'],
   },

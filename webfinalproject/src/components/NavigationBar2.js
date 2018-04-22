@@ -14,7 +14,8 @@ class NavigationBar extends React.Component {
     this.logout = this.logout.bind(this);
   }
   componentDidMount() {
-    this.props.fetchArtikels('adihidayat');
+    console.log(this.props.namaUstadz, 'dari navbar');
+    this.props.fetchArtikels(this.props.namaUstadz);
   }
   logout(e) {
     e.preventDefault();
@@ -38,6 +39,9 @@ class NavigationBar extends React.Component {
       <ul className="navbar-nav ml-auto nav-flex-icons" />
       
     );
+
+    const urlUstadz = `/${this.props.namaUstadz}/artikel/`;
+    const urlUstadzVideo = `/${this.props.namaUstadz}/video`;
 
     return (
       <div>
@@ -91,10 +95,10 @@ class NavigationBar extends React.Component {
               <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
                 <ul className=" mr-auto" />
                 <ul className="navbar-nav mr-auto">
-                  <li className={this.state.linkActive === '/namaustadz/artikel' ? 'nav-item active' : 'nav-item'}>
+                  <li className={this.state.linkActive === `/${this.props.namaUstadz}/artikel` ? 'nav-item active' : 'nav-item'}>
                     <Link 
-                      to="/namaustadz/artikel" 
-                      onClick={() => this.activeLink('/namaustadz/artikel')} className="nav-link text-center waves-effect waves-light"
+                      to={urlUstadz} 
+                      onClick={() => this.activeLink(urlUstadz)} className="nav-link text-center waves-effect waves-light"
                     > Artikel 
                     
                       <br />
@@ -102,8 +106,8 @@ class NavigationBar extends React.Component {
 
                     </Link>
                   </li>
-                  <li className={this.state.linkActive === '/video' ? 'nav-item active' : 'nav-item'}>
-                    <Link to="/video" onClick={() => this.activeLink('/video')} className="nav-link waves-effect waves-light"> Video </Link>
+                  <li className={this.state.linkActive === `/${this.props.namaUstadz}/video` ? 'nav-item active' : 'nav-item'}>
+                    <Link to={urlUstadzVideo} onClick={() => this.activeLink(urlUstadzVideo)} className="nav-link waves-effect waves-light"> Video </Link>
                   </li>
                   <li className={this.state.linkActive === '/audio' ? 'nav-item active' : 'nav-item'}>
                     <Link to="/audio" onClick={() => this.activeLink('/audio')} className="nav-link waves-effect waves-light"> Audio </Link>

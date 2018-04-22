@@ -1,17 +1,11 @@
 import {
-  FETCH_ARTIKELS,
-  FETCH_ALL_ARTIKELS,
-  CREATE_ARTIKEL,
-  UPDATE_ARTIKEL,
-  DELETED_ARTIKEL,
-  LIMIT_ARTIKEL,
-  // // UPDATE_ARTIKEL_ERROR,
-  // UPDATE_ARTIKEL_SUCCESS,
-  // DELETED_ARTIKEL,
-  // DELETED_ARTIKEL_SUCCESS,
-  // SEARCH_ARTIKEL,
-  // SEARCH_ARTIKEL_SUCCESS,
-} from '../actions/artikel';
+  FETCH_VIDEOS,
+  FETCH_ALL_VIDEOS,
+  UPDATE_VIDEO,
+  DELETED_VIDEO,
+  LIMIT_VIDEO,
+  CREATE_VIDEO,
+} from '../actions/video';
 
 const initialState = {
   data: [],
@@ -22,25 +16,25 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_ARTIKELS:
+    case FETCH_VIDEOS:
       return { 
         ...state,
         data: action.data.data,
       };
 
-    case FETCH_ALL_ARTIKELS:
+    case FETCH_ALL_VIDEOS:
       return { 
         ...state,
         data: action.data.data,
       };
-    case LIMIT_ARTIKEL:
+    case LIMIT_VIDEO:
       console.log(action.IsData, 'di reducer');
       console.log(...state.data, 'di reducer 2');
       return { 
         ...state,
         data: [...state.data, ...action.IsData],
       };
-    case CREATE_ARTIKEL:
+    case CREATE_VIDEO:
       console.log(action.IsData, 'di reducer');
       console.log(...state.data, 'di reducer 2');
       return {
@@ -48,7 +42,7 @@ export default (state = initialState, action) => {
         data: [...state.data, action.IsData],
         jumlahDelete: state.jumlahDelete - 1,
       };
-    case UPDATE_ARTIKEL:
+    case UPDATE_VIDEO:
       return {
         ...state,
         data: state.data.map(item => {
@@ -60,7 +54,7 @@ export default (state = initialState, action) => {
 
     // case UPDATE_PHONE_SUCCESS:
     //   return state;
-    case DELETED_ARTIKEL:
+    case DELETED_VIDEO:
       return {
         ...state,
         data: state.data.filter(item => item._id !== action.id),

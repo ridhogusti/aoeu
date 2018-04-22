@@ -18,6 +18,7 @@ import NavigationBar from './components/NavigationBar';
 import FlashMessagesList from './components/flash/FlashMessagesList';
 import UstadzApp from './UstadzApp';
 import ArtikelDetail from './components/Artikel/ArtikelDetail';
+import VideoDetail from './components/Video/VideoDetail';
 
 class App extends Component {
   render() {
@@ -35,11 +36,14 @@ class App extends Component {
           <Route path="/new-event" component={requireAuth(NewEventPage)} />
           <Route path="/artikel/detail/:id" component={ArtikelDetail} />
           <Route path="/artikel" component={ArtikelPage} />
+          <Route path="/video/detail/:id" component={VideoDetail} />
           <Route path="/video" component={VideoPage} />
           <Route path="/audio" component={AudioPage} />
           <Route path="/jadwal" component={JadwalPage} />
           <Route path="/ustadz" component={UstadzPage} />
+          <Route path="/:username/video" component={UstadzApp} />
           <Route path="/:username/artikel" component={UstadzApp} />
+
         </Switch>
       </div>
         

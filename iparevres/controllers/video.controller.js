@@ -8,8 +8,8 @@ import HTTPStatus from 'http-status';
 import contants from '../config/constants';
 
 import { filteredBody } from '../utils/filteredBody';
-import Artikel from '../models/artikel.model';
-import User from '../models/user.model';
+import Video from '../models/video.model';
+// import User from '../models/user.model';
 
 const gm = require('gm').subClass({ imageMagick: true });
 const fs = require('fs');
@@ -20,15 +20,13 @@ export const validation = {
       title: Joi.string()
         .min(3)
         .required(),
-      text: Joi.string().required(),
-      image: Joi.string(),
+      video: Joi.string(),
     },
   },
   update: {
     body: {
       title: Joi.string().min(3),
-      text: Joi.string(),
-      image: Joi.string(),
+      video: Joi.string(),
     },
   },
 };
@@ -37,10 +35,10 @@ export async function getList(req, res, next) {
   try {
     const promise = await Promise.all([
       // User.findById(req.user._id),
-      Artikel.list({ skip: req.query.skip, limit: req.query.limit }),
+      Video.list({ skip: req.query.skip, limit: req.query.limit }),
     ]);
 
-    const artikels = promise[0].reduce((arr, post) => {
+    const videos = promise[0].reduce((arr, post) => {
       arr.push({
         ...post.toJSON(),
       });
@@ -48,7 +46,7 @@ export async function getList(req, res, next) {
       return arr;
     }, []);
 
-    return res.status(HTTPStatus.OK).json(artikels);
+    return res.status(HTTPStatus.OK).json(videos);
   } catch (err) {
     err.status = HTTPStatus.BAD_REQUEST;
     return next(err);
@@ -59,18 +57,18 @@ export async function getByUsername(req, res, next) {
   try {
     const promise = await Promise.all([
       // User.findById(req.user._id),
-      Artikel.listByUsername({ skip: req.query.skip, limit: req.query.limit }, req.params.username),
+      Video.listByUsername({ skip: req.query.skip, limit: req.query.limit }, req.params.username),
     ]);
-    const artikels = promise[0].reduce((arr, artikel) => {
+    const videos = promise[0].reduce((arr, video) => {
       arr.push({
-        ...artikel.toJSON(),
+        ...video.toJSON(),
       });
       return arr;
     }, []);
-    console.log(artikels, 'data bro');
+    console.log(videos, 'data bro');
 
     return res.status(HTTPStatus.OK).json(
-      artikels
+      videos
     );
     // return res.status(HTTPStatus.OK).json(
     //   ...promise[1].toJSON(),
@@ -83,24 +81,24 @@ export async function getByUsername(req, res, next) {
 
 export async function limitUmum(req, res, next) {
   try {
-    const countDoc = Artikel.count({ 'author.username': 'ustadzabdulsomad' });
+    const countDoc = Video.count({ 'author.username': 'ustadzabdulsomad' });
     console.log(countDoc, 'ini jumlah dataaoeu');
     console.log(req.params.limit, 'ini limit');
     const promise = await Promise.all([
-      Artikel.listLimitUmum(countDoc, parseInt(req.params.limit)),
+      Video.listLimitUmum(countDoc, parseInt(req.params.limit)),
     ]);
     // console.log(...promise[0], 'data bro');
 
-    const artikels = promise[0].reduce((arr, artikel) => {
+    const videos = promise[0].reduce((arr, video) => {
       arr.push({
-        ...artikel.toJSON(),
+        ...video.toJSON(),
       });
       return arr;
     }, []);
     // console.log(artikels, 'data bro');
 
     return res.status(HTTPStatus.OK).json(
-      artikels
+      videos
     );
 
     // return res.status(HTTPStatus.OK).json(
@@ -116,20 +114,20 @@ export async function limit(req, res, next) {
   try {
     console.log(req.params.limit, 'ini limitaa');
     const promise = await Promise.all([
-      Artikel.listLimit(parseInt(req.params.limit), req.params.username),
+      Video.listLimit(parseInt(req.params.limit), req.params.username),
     ]);
     console.log(...promise[0], 'data bro');
 
-    const artikels = promise[0].reduce((arr, artikel) => {
+    const videos = promise[0].reduce((arr, video) => {
       arr.push({
-        ...artikel.toJSON(),
+        ...video.toJSON(),
       });
       return arr;
     }, []);
-    console.log(artikels, 'data broo');
+    console.log(videos, 'data broo');
 
     return res.status(HTTPStatus.OK).json(
-      artikels
+      videos
     );
 
     // return res.status(HTTPStatus.OK).json(
@@ -144,7 +142,7 @@ export async function limit(req, res, next) {
 export async function getById(req, res, next) {
   try {
     const promise = await Promise.all([
-      Artikel.listById({ skip: req.query.skip, limit: req.query.limit }, req.params.id),
+      Video.listById({ skip: req.query.skip, limit: req.query.limit }, req.params.id),
     ]);
     console.log(...promise[0], 'data bro');
 
@@ -161,53 +159,53 @@ export async function create(req, res, next) {
   console.log('masue bro', req.fields);
   console.log('masue bro', req.files);
   // const ambilNamaImage = req.files.image.path.split('/');
-  let tambahImage;
+  let tambahVideo;
   let body;
-  if (req.files.image.type === 'video/mp4') {
-    fs.rename(req.files.image.path, `${req.files.image.path}.mp4`, val => {
+  if (req.files.video.type === 'video/mp4') {
+    fs.rename(req.files.video.path, `./public/videos/${req.files.video.name}`, val => {
       console.log(val);
     });
     // tambahImage = { ...req.fields, image: `${ambilNamaImage[10]}.mp4` };
-    tambahImage = { ...req.fields, image: req.files.image.name };
-    body = filteredBody(tambahImage, contants.WHITELIST.artikels.create);
+    tambahVideo = { ...req.fields, video: req.files.video.name };
+    body = filteredBody(tambahVideo, contants.WHITELIST.videos.create);
   } else {
     fs.rename(req.files.image.path, `./public/images/${req.files.image.name}`, val => {
       console.log(val);
     });
     // tambahImage = { ...req.fields, image: `${ambilNamaImage[10]}.jpg` };
-    tambahImage = { ...req.fields, image: req.files.image.name };
-    body = filteredBody(tambahImage, contants.WHITELIST.artikels.create);
-    gm(`./public/images/${req.files.image.name}`)
-      .resize(250, 250)
-      .noProfile()
-      .write(`./public/uploads/thumb_250/${req.files.image.name}`, (err) => {
-        if (!err) {
-          console.log('berhasil');
-        } else {
-          console.log(err);
-        }
-      });
+    tambahVideo = { ...req.fields, video: req.files.video.name };
+    body = filteredBody(tambahVideo, contants.WHITELIST.videos.create);
+    // gm(`./public/images/${req.files.image.name}`)
+    //   .resize(250, 250)
+    //   .noProfile()
+    //   .write(`./public/uploads/thumb_250/${req.files.image.name}`, (err) => {
+    //     if (!err) {
+    //       console.log('berhasil');
+    //     } else {
+    //       console.log(err);
+    //     }
+    //   });
   }
 
   try {
     console.log(body);
     return res
       .status(HTTPStatus.CREATED)
-      .json(await Artikel.createArtikel(body, req.user._id, req.user.name, req.user.username));
+      .json(await Video.createVideo(body, req.user._id, req.user.name, req.user.username));
   } catch (e) {
     e.status = HTTPStatus.BAD_REQUEST;
     return next(e);
   }
 }
 
-export async function deleteArtikel(req, res, next) {
+export async function deleteVideo(req, res, next) {
   try {
-    const artikel = await Artikel.findById(req.params.id);
+    const video = await Video.findById(req.params.id);
 
-    if (artikel.author._id.toString() !== req.user._id.toString()) {
+    if (video.author._id.toString() !== req.user._id.toString()) {
       return res.sendStatus(HTTPStatus.UNAUTHORIZED);
     }
-    await artikel.remove();
+    await video.remove();
     return res.sendStatus(HTTPStatus.OK);
   } catch (err) {
     err.status = HTTPStatus.BAD_REQUEST;
@@ -215,61 +213,65 @@ export async function deleteArtikel(req, res, next) {
   }
 }
 
-export async function updateArtikel(req, res, next) {
+export async function updateVideo(req, res, next) {
   // const body = filteredBody(req.body, contants.WHITELIST.artikels.update);
-  let tambahImage;
+  let tambahVideo;
   let body;
-  if (req.files.image == null) {
+  if (req.files.video == null) {
     console.log(req.files, 'aeouh');
-    console.log(req.files.image == null);
-    body = filteredBody(req.fields, contants.WHITELIST.artikels.update);
+    console.log(req.files.video == null);
+    body = filteredBody(req.fields, contants.WHITELIST.videos.update);
 
     try {
-      const artikel = await Artikel.findById(req.params.id);
+      const video = await Video.findById(req.params.id);
 
-      if (artikel.author._id.toString() !== req.user._id.toString()) {
+      if (video.author._id.toString() !== req.user._id.toString()) {
         return res.sendStatus(HTTPStatus.UNAUTHORIZED);
       }
 
       Object.keys(body).forEach(key => {
-        artikel[key] = body[key];
+        if (body[key] === 'undefined') {
+          video[key] = video[key];
+        } else {
+          video[key] = body[key];
+        }
       });
-
-      return res.status(HTTPStatus.OK).json(await artikel.save());
+      return res.status(HTTPStatus.OK).json(await video.save());
     } catch (err) {
       err.status = HTTPStatus.BAD_REQUEST;
       return next(err);
     }
   } else {
-    fs.rename(req.files.image.path, `./public/images/${req.files.image.name}`, val => {
+    fs.rename(req.files.video.path, `./public/videos/${req.files.video.name}`, val => {
       console.log(val);
     });
-    tambahImage = { ...req.fields, image: req.files.image.name };
-    body = filteredBody(tambahImage, contants.WHITELIST.artikels.create);
-    gm(`./public/images/${req.files.image.name}`)
-      .resize(250, 250)
-      .noProfile()
-      .write(`./public/uploads/thumb_250/${req.files.image.name}`, (err) => {
-        if (!err) {
-          console.log('berhasil');
-        } else {
-          console.log(err);
-        }
-      });
+    tambahVideo = { ...req.fields, video: req.files.video.name };
+    body = filteredBody(tambahVideo, contants.WHITELIST.videos.update);
+    // gm(`./public/images/${req.files.image.name}`)
+    //   .resize(250, 250)
+    //   .noProfile()
+    //   .write(`./public/uploads/thumb_250/${req.files.image.name}`, (err) => {
+    //     if (!err) {
+    //       console.log('berhasil');
+    //     } else {
+    //       console.log(err);
+    //     }
+    //   });
   }
 
   try {
-    const artikel = await Artikel.findById(req.params.id);
+    const video = await Video.findById(req.params.id);
 
-    if (artikel.author._id.toString() !== req.user._id.toString()) {
+    if (video.author._id.toString() !== req.user._id.toString()) {
       return res.sendStatus(HTTPStatus.UNAUTHORIZED);
     }
 
     Object.keys(body).forEach(key => {
-      artikel[key] = body[key];
+      console.log(body[key], 'bodi nya');
+      video[key] = body[key];
     });
 
-    return res.status(HTTPStatus.OK).json(await artikel.save());
+    return res.status(HTTPStatus.OK).json(await video.save());
   } catch (err) {
     err.status = HTTPStatus.BAD_REQUEST;
     return next(err);

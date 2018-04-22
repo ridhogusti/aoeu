@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
-import ArtikelUstadzList from './ArtikelUstadzList';
+import VideoUstadzList from './VideoUstadzList';
 import './styleArtikelUstadz.css';
-import { createArtikel, fetchArtikels, deleteArtikel, limitArtikel } from '../../actions/artikel';
+import { createVideo, fetchVideos, deleteVideo, limitVideo } from '../../actions/video';
 
-class ArtikelUstadzPage extends Component {
+class VideoUstadzPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class ArtikelUstadzPage extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchArtikels(this.props.match.params.username);
+    this.props.fetchVideos(this.props.match.params.username);
     window.scrollTo(0, 0);
   }
   handleEditorChange = (e) => {
@@ -27,7 +27,7 @@ class ArtikelUstadzPage extends Component {
   }
   limitArtikell = () => {
     console.log('hai');
-    this.props.limitArtikel(this.state.limit - this.props.jumlahDelete, this.props.match.params.username);
+    this.props.limitVideo(this.state.limit, this.props.match.params.username);
     this.setState({ limit: this.state.limit + 4 });
   }
   
@@ -42,7 +42,7 @@ class ArtikelUstadzPage extends Component {
     } else {
       akses = jwtDecode(localStorage.getItem('jwtToken')); 
     }
-    console.log(this.props.jumlahDelete, 'jumlah delete');
+    
     return (
       <div>
         <div className="row">
@@ -55,9 +55,9 @@ class ArtikelUstadzPage extends Component {
               { 
                 akses.akses === 'ustadz' && akses.username === this.props.match.params.username ? 
                   <Link
-                    to={`/${this.props.match.params.username}/artikel/add`}
+                    to={`/${this.props.match.params.username}/video/add`}
                     className="btn teal btn-lg btn-block"
-                  >Tambah Artikel</Link>
+                  >Tambah Video</Link>
                   : 
                   ''
               }
@@ -77,12 +77,12 @@ class ArtikelUstadzPage extends Component {
         >
 
           {
-            this.props.artikels.map(artikel => (<ArtikelUstadzList
+            this.props.videos.map(video => (<VideoUstadzList
               paramsUstadz={this.props.match.params.username} 
-              artikel={artikel} 
-              key={artikel._id}
+              video={video} 
+              key={video._id}
               modeEdit={this.modeEdit}
-              deleteArtikel={this.props.deleteArtikel}
+              deleteVideo={this.props.deleteVideo}
             />))
           }
           
@@ -112,15 +112,14 @@ class ArtikelUstadzPage extends Component {
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    artikels: state.artikels.data,
-    jumlahDelete: state.artikels.jumlahDelete,
+    videos: state.videos.data,
   };
 }
 
 export default connect(mapStateToProps, {
-  createArtikel,
-  fetchArtikels,
-  deleteArtikel,
-  limitArtikel,
-})(ArtikelUstadzPage);
+  createVideo,
+  fetchVideos,
+  deleteVideo,
+  limitVideo,
+})(VideoUstadzPage);
 

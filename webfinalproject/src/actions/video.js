@@ -1,74 +1,74 @@
 import axios from 'axios';
 // import ArtikelApi from '../utils/api/artikelApi';
 
-export const FETCH_ARTIKELS = 'FETCH_ARTIKELS';
-export const FETCH_ALL_ARTIKELS = 'FETCH_ALL_ARTIKELS';
-export const FETCH_ARTIKEL = 'FETCH_ARTIKEL';
+export const FETCH_VIDEOS = 'FETCH_VIDEOS';
+export const FETCH_ALL_VIDEOS = 'FETCH_ALL_VIDEOS';
+export const FETCH_VIDEO = 'FETCH_VIDEO';
 
-export const LIMIT_ARTIKEL = 'LIMIT_ARTIKEL';
+export const LIMIT_VIDEO = 'LIMIT_VIDEO';
 
-export const CREATE_ARTIKEL = 'CREATE_ARTIKEL';
+export const CREATE_VIDEO = 'CREATE_VIDEO';
 
-export const UPDATE_ARTIKEL = 'UPDATE_ARTIKEL';
+export const UPDATE_VIDEO = 'UPDATE_VIDEO';
 
-export const DELETED_ARTIKEL = 'DELETED_ARTIKEL';
+export const DELETED_VIDEO = 'DELETED_VIDEO';
 
 export const SEARCH_ARTIKEL = 'SEARCH_ARTIKEL';
 export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
-export function fetchArtikels(args) {
+export function fetchVideos(args) {
   console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${args}`)
-    .then(data => dispatch({ type: FETCH_ARTIKELS, data }));
+  return dispatch => axios.get(`http://localhost:3000/videos/${args}`)
+    .then(data => dispatch({ type: FETCH_VIDEOS, data }));
 }
 
-export function fetchAllArtikels() {
-  return dispatch => axios.get('http://localhost:3000/artikels/')
-    .then(data => dispatch({ type: FETCH_ALL_ARTIKELS, data }));
+export function fetchAllVideos() {
+  return dispatch => axios.get('http://localhost:3000/videos/')
+    .then(data => dispatch({ type: FETCH_ALL_VIDEOS, data }));
 }
 
-export function fetchArtikel(args) {
-  return dispatch => axios.get(`http://localhost:3000/artikels/ambil/${args}`)
-    .then(data => dispatch({ type: FETCH_ARTIKEL, data }));
+export function fetchVideo(args) {
+  return dispatch => axios.get(`http://localhost:3000/videos/ambil/${args}`)
+    .then(data => dispatch({ type: FETCH_VIDEO, data }));
 }
-export function createArtikel(data) {
-  return dispatch => axios.post('http://localhost:3000/artikels', data).then(res => {
+export function createVideo(data) {
+  return dispatch => axios.post('http://localhost:3000/videos', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
-    dispatch({ type: CREATE_ARTIKEL, IsData });
+    dispatch({ type: CREATE_VIDEO, IsData });
   });
 }
 
-export function updateArtikel(data) {
-  return dispatch => axios.put(`http://localhost:3000/artikels/${data.get('_id')}`, data).then(res => {
+export function updateVideo(data) {
+  return dispatch => axios.put(`http://localhost:3000/videos/${data.get('_id')}`, data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
-    dispatch({ type: UPDATE_ARTIKEL, IsData });
+    dispatch({ type: UPDATE_VIDEO, IsData });
   });
 }
 
-export function deleteArtikel(id) {
+export function deleteVideo(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/artikels/${id}`).then(res => {
+  return dispatch => axios.delete(`http://localhost:3000/videos/${id}`).then(res => {
     console.log(res, 'respone dari create');
-    dispatch({ type: DELETED_ARTIKEL, id });
+    dispatch({ type: DELETED_VIDEO, id });
   });
 }
 
-export function limitArtikelUmum(limit) {
+export function limitVideoUmum(limit) {
   console.log(limit, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${limit}/umum`).then(res => {
+  return dispatch => axios.get(`http://localhost:3000/videos/${limit}/umum`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
-    dispatch({ type: LIMIT_ARTIKEL, IsData });
+    dispatch({ type: LIMIT_VIDEO, IsData });
   });
 }
-export function limitArtikel(limit, username) {
+export function limitVideo(limit, username) {
   console.log(limit, username, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${limit}/${username}`).then(res => {
+  return dispatch => axios.get(`http://localhost:3000/videos/${limit}/${username}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
-    dispatch({ type: LIMIT_ARTIKEL, IsData });
+    dispatch({ type: LIMIT_VIDEO, IsData });
   });
 }
 

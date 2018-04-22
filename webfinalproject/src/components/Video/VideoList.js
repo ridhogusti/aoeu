@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class VideoList extends Component {
   render() {
+    const { video } = this.props;
+    const uriImage = 'https://brightplanet.com/wp-content/uploads/2016/04/play-1073616_1280-1030x1030.png';
     return (
       <div
         style={{
@@ -14,12 +17,9 @@ class VideoList extends Component {
           {/* Card image */}
           <div className="view overlay">
             <img 
-              style={{
-                opacity: 0.5,
-              }}
-              className="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
+              className="card-img-top" src={uriImage}
             />
-            <span
+            {/* <span
               className="td-video-play-ico"
 
               style={{
@@ -46,26 +46,35 @@ class VideoList extends Component {
                   margin: 'auto',
                 }}
               />
-            </span>
+            </span> */}
 
             <a>
               <div className="mask rgba-white-slight waves-effect waves-light" />
             </a>
           </div>
           {/* Button */}
-          <a className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"><i className="fa fa-chevron-right pl-1" /></a>
+          <Link
+            to={{
+              pathname: `/video/detail/${video._id}`,
+              state: { video },
+            }}
+            className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"
+          >
+            <i className="fa fa-chevron-right pl-1" />
+          </Link>
+          {/* <a className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"><i className="fa fa-chevron-right pl-1" /></a> */}
 
           {/* Card content */}
           <div className="card-body">
             {/* Title */}
-            <h4 className="card-title">Judul Video</h4>
+            <h4 className="card-title">{video.title}</h4>
             {/* Text */}
           </div>
           {/* Card footer */}
           <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
             <ul className="list-unstyled list-inline font-small">
-              <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />05/10/2015</li>
-              <li className="list-inline-item"><a href="#" className="white-text">Ustadz Abdul Somad</a></li>
+              <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />{video.updatedAt}</li>
+              <li className="list-inline-item"><a href="#" className="white-text">{video.author.name}</a></li>
             </ul>
           </div>
         </div>

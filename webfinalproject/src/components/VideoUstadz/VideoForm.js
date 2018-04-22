@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
-import { Editor } from '@tinymce/tinymce-react';
 import { withRouter } from 'react-router-dom';
 
-class ArtikelForm extends Component {
+class VideoForm extends Component {
   state = {
-    _id: this.props.editartikel ? this.props.editartikel._id : null,
-    title: this.props.editartikel ? this.props.editartikel.title : '',
-    image: this.props.editartikel ? this.props.editartikel.image : null,
-    text: this.props.editartikel ? this.props.editartikel.text : '',
+    _id: this.props.editvideo ? this.props.editvideo._id : null,
+    title: this.props.editvideo ? this.props.editvideo.title : '',
+    video: this.props.editvideo ? this.props.editvideo.video : null,
     error: '',
     errors: this.props.errorss ? this.props.errorss : '',
   }
-
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-
   componentWillReceiveProps = (nextProps) => {
     this.setState({
-      _id: nextProps.editartikel._id,
-      title: nextProps.editartikel.title,
-      image: nextProps.editartikel.image,
-      text: nextProps.editartikel.text,
+      _id: nextProps.editvideo._id,
+      title: nextProps.editvideo.title,
+      video: nextProps.editvideo.video,
       errors: nextProps.errorss,
     });
   }
@@ -39,17 +34,12 @@ class ArtikelForm extends Component {
     // }
   }
 
-  handleEditorChange = (e) => {
-    this.setState({ text: e.target.getContent() });
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { _id } = this.state;
-    const image = this.imageInput.files[0];
+    const video = this.videoInput.files[0];
     const title = this.titleInput.value;
-    const text = this.textInput.editor.contentDocument.body.innerHTML;
-    this.props.saveArtikel({ _id, title, image, text });
+    this.props.saveVideo({ _id, title, video });
   }
   render() {
     return (
@@ -72,18 +62,18 @@ class ArtikelForm extends Component {
                 value={this.state.title}
                 name="title"
               />
-              <label htmlFor="inputMDEx">Judul Artikel</label>
+              <label htmlFor="inputMDEx">Judul Video</label>
             </div>
             <div className="md-form">
 
               <div className="file-field">
                 <div className="btn btn-primary btn-sm float-left">
                   <input
-                    ref={imageInput => (this.imageInput = imageInput)}
-                    // required 
+                    ref={videoInput => (this.videoInput = videoInput)}
+                    // required
                     type="file"
-                    name="image"
-                    accept=".jpg,.png,.jpeg"
+                    name="video"
+                    accept=".mp4"
                     // onChange={this.handleChange}
                   />
                   <span>Pilih Gambar</span>
@@ -91,8 +81,8 @@ class ArtikelForm extends Component {
                 <div className="file-path-wrapper">
                   <input
                     // required
-                    value={this.state.image}
-                    name="image"
+                    value={this.state.video}
+                    name="video"
                     // onChange={this.handleChange}
                     className="file-path validate" type="text" placeholder="Upload your file"
                   />
@@ -100,25 +90,13 @@ class ArtikelForm extends Component {
               </div>
             </div>
             <br />
-            <Editor
-              ref={textInput => (this.textInput = textInput)}
-              // onChange={this.handleChange}
-              name="text"
-              // initialValue="<p>Isi artikel di sini</p>"
-              value={this.state.text}
-              init={{
-                plugins: 'link image code',
-                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
-              }}
-              onChange={this.handleEditorChange}
-            />
             <div className="modal-footer">
               {/* <a type="submit" className="btn btn-teal waves-effect waves-light">Simpan</a> */}
               <button type="submit" className="btn btn-teal waves-effect waves-light">Simpan</button>
               {/* <button
                 onClick={() => this._handleSubmit(this.state.editMode._id)} 
                type="submit" className="btn btn-teal waves-effect waves-light">Simpan</button> */}
-              {/* <a type="button" className="btn btn-outline-teal waves-effect" data-dismiss="modal">Batal</a> */}
+              {/* <a type="button" {onClick}={this.props.history.goBack()} className="btn btn-outline-teal waves-effect" data-dismiss="modal">Batal</a> */}
               <button
                 type="button"
                 className="btn btn-outline-teal waves-effect"
@@ -134,4 +112,4 @@ class ArtikelForm extends Component {
     );
   }
 }
-export default withRouter(ArtikelForm);
+export default withRouter(VideoForm);
