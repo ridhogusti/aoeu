@@ -72,7 +72,7 @@ class VideoUstadzList extends Component {
                     show={this.state.show}
                     title="Peringatan!"
                     text="Apakah anda yakin menghapus nya?"
-                    onConfirm={() => this.delArtikel(video._id)}
+                    onConfirm={() => this.delVideo(video._id)}
                     onCancel={() => this.setState({ show: false })}
                     showCancelButton
                   />

@@ -10,6 +10,12 @@ const WHITELIST = {
     create: ['title', 'video'],
     update: ['title', 'video'],
   },
+
+  audios: {
+    create: ['title', 'audio'],
+    update: ['title', 'audio'],
+  },
+  
   users: {
     create: ['email', 'username', 'password', 'akses', 'name'],
   },

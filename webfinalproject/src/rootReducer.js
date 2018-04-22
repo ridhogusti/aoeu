@@ -6,7 +6,9 @@ import artikels from './reducers/artikels';
 import ustadzs from './reducers/ustadz';
 import editartikel from './reducers/editartikel';
 import videos from './reducers/videos';
+import audios from './reducers/audios';
 import editvideo from './reducers/editvideo';
+import editaudio from './reducers/editaudio';
 
 export default combineReducers({
   flashMessages,
@@ -16,4 +18,6 @@ export default combineReducers({
   editartikel,
   videos,
   editvideo,
+  audios,
+  editaudio,
 });

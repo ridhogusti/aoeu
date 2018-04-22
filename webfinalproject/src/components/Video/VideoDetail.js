@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchVideos, limitVideo } from '../../actions/video';
 
 class VideoDetail extends Component {
@@ -83,9 +84,15 @@ class VideoDetail extends Component {
                       <div className="mask rgba-white-slight waves-effect waves-light" />
                     </a>
                   </div>
-                  <a className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light">
+                  <Link
+                    to={{
+                      pathname: `/video/detail/${video._id}`,
+                      state: { video },
+                    }}
+                    className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"
+                  >
                     <i className="fa fa-chevron-right pl-1" />
-                  </a>
+                  </Link>
 
                   <div className="card-body">
                     <h4 className="card-title">{video.title}</h4>

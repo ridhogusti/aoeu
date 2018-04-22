@@ -42,6 +42,7 @@ class NavigationBar extends React.Component {
 
     const urlUstadz = `/${this.props.namaUstadz}/artikel/`;
     const urlUstadzVideo = `/${this.props.namaUstadz}/video`;
+    const urlUstadzAudio = `/${this.props.namaUstadz}/audio`;
 
     return (
       <div>
@@ -109,8 +110,8 @@ class NavigationBar extends React.Component {
                   <li className={this.state.linkActive === `/${this.props.namaUstadz}/video` ? 'nav-item active' : 'nav-item'}>
                     <Link to={urlUstadzVideo} onClick={() => this.activeLink(urlUstadzVideo)} className="nav-link waves-effect waves-light"> Video </Link>
                   </li>
-                  <li className={this.state.linkActive === '/audio' ? 'nav-item active' : 'nav-item'}>
-                    <Link to="/audio" onClick={() => this.activeLink('/audio')} className="nav-link waves-effect waves-light"> Audio </Link>
+                  <li className={this.state.linkActive === `/${this.props.namaUstadz}/audio` ? 'nav-item active' : 'nav-item'}>
+                    <Link to={urlUstadzAudio} onClick={() => this.activeLink(urlUstadzAudio)} className="nav-link waves-effect waves-light"> Audio </Link>
                   </li>
                   <li className={this.state.linkActive === '/jadwal' ? 'nav-item active' : 'nav-item'}>
                     <Link
