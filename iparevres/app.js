@@ -22,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/aoeu', (err) => {
 const artikels = require('./routes/artikels');
 const videos = require('./routes/videos');
 const audios = require('./routes/audios');
+const jadwals = require('./routes/jadwals');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -57,6 +58,7 @@ app.use(formidable({
 app.use('/artikels', artikels);
 app.use('/videos', videos);
 app.use('/audios', audios);
+app.use('/jadwals', jadwals);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

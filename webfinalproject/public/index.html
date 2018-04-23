@@ -56,11 +56,25 @@
     <script type="text/javascript" src="https://mdbootstrap.com/previews/docs/latest/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://mdbootstrap.com/previews/docs/latest/js/mdb.min.js"></script> -->
     <script type="text/javascript">
+      console.log('aonetuh');
+
+
+
+// $(function () {
+
+    $(document).ready(() => {
+$(".datepicker").pickadate({
+  monthsFull: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+});
+
+// Time Picker Initialization
+$('#input_starttime').pickatime({
+  twelvehour: false,
+});
+
 $('#carousel-example-1z').on('slide.bs.carousel', function () {
   // do something…
 })
-
-$(function () {
     $(".sticky").sticky({
         topSpacing: 81
         , zIndex: 3
@@ -79,6 +93,7 @@ $(function () {
         // , stopper: "#aoeu2"
     });
 });
+// Data Picker Initialization
 
     </script>
   </body>

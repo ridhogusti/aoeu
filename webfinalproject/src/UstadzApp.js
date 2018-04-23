@@ -3,9 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import ArtikelUstadz from './components/ArtikelUstadz/ArtikelUstadzPage';
 import VideoUstadz from './components/VideoUstadz/VideoUstadzPage';
 import AudioUstadz from './components/AudioUstadz/AudioUstadzPage';
+import JadwalUstadz from './components/JadwalUstadz/JadwalUstadzPage';
 import ModalArtikelUstadz from './components/ArtikelUstadz/ModalArtikelUstadz';
 import ModalVideoUstadz from './components/VideoUstadz/ModalVideoUstadz';
 import ModalAudioUstadz from './components/AudioUstadz/ModalAudioUstadz';
+import ModalJadwalUstadz from './components/JadwalUstadz/ModalJadwalUstadz';
 
 // import requireAuth from './utils/requireAuth';
 import NavigationBar from './components/NavigationBar2';
@@ -34,6 +36,9 @@ class UstadzApp extends Component {
           <Route path="/:username/audio/edit/:id" component={ModalAudioUstadz} />
           <Route path="/:username/audio/add" component={ModalAudioUstadz} />
           <Route path="/:username/audio" component={AudioUstadz} />
+          <Route path="/:username/jadwal/edit/:id" component={ModalJadwalUstadz} />
+          <Route path="/:username/jadwal/add" component={ModalJadwalUstadz} />
+          <Route path="/:username/jadwal" component={JadwalUstadz} />
         </Switch>
       </div>
         

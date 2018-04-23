@@ -43,6 +43,7 @@ class NavigationBar extends React.Component {
     const urlUstadz = `/${this.props.namaUstadz}/artikel/`;
     const urlUstadzVideo = `/${this.props.namaUstadz}/video`;
     const urlUstadzAudio = `/${this.props.namaUstadz}/audio`;
+    const urlUstadzJadwal = `/${this.props.namaUstadz}/jadwal`;
 
     return (
       <div>
@@ -113,11 +114,8 @@ class NavigationBar extends React.Component {
                   <li className={this.state.linkActive === `/${this.props.namaUstadz}/audio` ? 'nav-item active' : 'nav-item'}>
                     <Link to={urlUstadzAudio} onClick={() => this.activeLink(urlUstadzAudio)} className="nav-link waves-effect waves-light"> Audio </Link>
                   </li>
-                  <li className={this.state.linkActive === '/jadwal' ? 'nav-item active' : 'nav-item'}>
-                    <Link
-                      to="/jadwal" onClick={() => this.activeLink('/jadwal')} 
-                      className="nav-link waves-effect waves-light"
-                    > Jadwal Kegiatan </Link>
+                  <li className={this.state.linkActive === `/${this.props.namaUstadz}/jadwal` ? 'nav-item active' : 'nav-item'}>
+                    <Link to={urlUstadzJadwal} onClick={() => this.activeLink(urlUstadzJadwal)} className="nav-link waves-effect waves-light" > Jadwal Kegiatan </Link>
                   </li>
                   <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
                     <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>

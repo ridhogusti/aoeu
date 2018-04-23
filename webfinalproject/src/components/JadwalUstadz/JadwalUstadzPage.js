@@ -1,80 +1,75 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import './scriptartikel';
-import JadwalList from './JadwalList';
-import { fetchAllJadwals, limitJadwalUmum } from '../../actions/jadwal';
+import jwtDecode from 'jwt-decode';
+import { Link } from 'react-router-dom';
+import JadwalUstadzList from './JadwalUstadzList';
+import './styleArtikelUstadz.css';
+import { createJadwal, fetchJadwals, deleteJadwal, limitJadwal } from '../../actions/jadwal';
 
-class AudioPage extends Component {
+class JadwalUstadzPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      content: '',
+      errors: '',
+      editMode: {},
+      title: '',
       limit: 0,
     };
   }
+
   componentDidMount() {
-    this.props.fetchAllJadwals();
+    this.props.fetchJadwals(this.props.match.params.username);
     window.scrollTo(0, 0);
+  }
+  handleEditorChange = (e) => {
+    this.setState({ content: e.target.getContent() });
   }
   limitArtikell = () => {
     console.log('hai');
-    this.props.limitJadwalUmum(this.state.limit);
+    this.props.limitJadwal(this.state.limit, this.props.match.params.username);
     this.setState({ limit: this.state.limit + 4 });
   }
+  
   render() {
+    let akses;
+
+    if (localStorage.getItem('jwtToken') == null) {
+      akses = {
+        akses: 'tidak ada',
+        username: 'tidak ada',
+      };
+    } else {
+      akses = jwtDecode(localStorage.getItem('jwtToken')); 
+    }
+    
     return (
       <div>
-        <div
-          className="row"
-        >
+        <div className="row">
         
-          <div className="col-1" />
-          <div className="col-10">
-            {/* Carousel Wrapper*/}
-            <div id="carousel-example-1z" className="carousel slide carousel-fade" data-ride="carousel">
-              {/* Indicators*/}
-              <ol className="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to={0} className="active" />
-                <li data-target="#carousel-example-1z" data-slide-to={1} />
-                <li data-target="#carousel-example-1z" data-slide-to={2} />
-              </ol>
-              {/* /.Indicators*/}
-              {/* Slides*/}
-              <div className="carousel-inner" role="listbox">
-                {/* First slide*/}
-                <div className="carousel-item active">
-                  <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide" />
-                </div>
-                {/* /First slide*/}
-                {/* Second slide*/}
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide" />
-                </div>
-                {/* /Second slide*/}
-                {/* Third slide*/}
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide" />
-                </div>
-                {/* /Third slide*/}
-              </div>
-              {/* /.Slides*/}
-              {/* Controls*/}
-              <a className="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true" />
-                <span className="sr-only">Previous</span>
-              </a>
-              <a className="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true" />
-                <span className="sr-only">Next</span>
-              </a>
-              {/* /.Controls*/}
+          <div className="col-4" />
+          <div className="col-4">
+
+            <div>
+
+              { 
+                akses.akses === 'ustadz' && akses.username === this.props.match.params.username ? 
+                  <a
+                    href={`/${this.props.match.params.username}/jadwal/add`}
+                    className="btn teal btn-lg btn-block"
+                  >Tambah Jadwal</a>
+                  // <Link
+                  //   to={`/${this.props.match.params.username}/jadwal/add`}
+                  //   className="btn teal btn-lg btn-block"
+                  // >Tambah Jadwal</Link>
+                  : 
+                  ''
+              }
+              
             </div>
-            {/* /.Carousel Wrapper*/}
-
           </div>
-
-          <div className="col-1" />
+          <div className="col-4" />
         </div>
-
         <br />
         <div
           className="row" 
@@ -118,10 +113,13 @@ class AudioPage extends Component {
                     {/* Table body*/}
                     <tbody>
                       {
-                        this.props.jadwals.map((jadwal, i) => (<JadwalList
+                        this.props.jadwals.map((jadwal, i) => (<JadwalUstadzList
+                          paramsUstadz={this.props.match.params.username} 
                           jadwal={jadwal} 
                           key={jadwal._id}
                           nomor={i}
+                          modeEdit={this.modeEdit}
+                          deleteJadwal={this.props.deleteJadwal}
                         />))
                       }
                     </tbody>
@@ -135,7 +133,6 @@ class AudioPage extends Component {
           </div>
           
         </div>
-
         <div 
           style={{
             marginRight: '8%',
@@ -145,7 +142,7 @@ class AudioPage extends Component {
         >
 
           <div className="col-4" />
-          <div className="col-4 text-center">
+          <div className="col-4">
             <button type="button" onClick={this.limitArtikell} className="btn btn-default">Load More</button>
           </div> 
           <div className="col-4" />
@@ -164,4 +161,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchAllJadwals, limitJadwalUmum })(AudioPage);
+export default connect(mapStateToProps, {
+  createJadwal,
+  fetchJadwals,
+  deleteJadwal,
+  limitJadwal,
+})(JadwalUstadzPage);
+

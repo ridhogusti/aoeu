@@ -62,6 +62,7 @@ export async function create(req, res, next) {
   console.log(req.body);
 
   const body = filteredBody(req.body, constants.WHITELIST.users.create);
+  console.log(body, 'ini body bro');
   try {
     const user = await User.create(body);
     return res.status(HTTPStatus.CREATED).json(user.toAuthJSON());
