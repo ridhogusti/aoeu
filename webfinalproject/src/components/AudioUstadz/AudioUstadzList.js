@@ -43,7 +43,10 @@ class AudioUstadzList extends Component {
         <div className="row">
           <div className="col-5">
             <div className="view overlay rounded z-depth-2">
-              <img src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" className="img-fluid" />
+              <img
+                alt="his"
+                src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" className="img-fluid"
+              />
               <a>
                 <div className="mask waves-effect waves-light" />
               </a>

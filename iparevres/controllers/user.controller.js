@@ -92,3 +92,32 @@ export async function getUstadz(req, res, next) {
     return next(err);
   }
 }
+
+export async function limitUmum(req, res, next) {
+  try {
+    console.log(req.params.limit, 'ini limit');
+    const promise = await Promise.all([
+      User.listLimitUmum(parseInt(req.params.limit)),
+    ]);
+    // console.log(...promise[0], 'data bro');
+
+    const users = promise[0].reduce((arr, user) => {
+      arr.push({
+        ...user.toJSON(),
+      });
+      return arr;
+    }, []);
+    // console.log(artikels, 'data bro');
+
+    return res.status(HTTPStatus.OK).json(
+      users
+    );
+
+    // return res.status(HTTPStatus.OK).json(
+    //   ...promise[0]
+    // );
+  } catch (err) {
+    err.status = HTTPStatus.BAD_REQUEST;
+    return next(err);
+  }
+}

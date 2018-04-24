@@ -1,5 +1,6 @@
 import {
   FETCH_USTADZS,
+  LIMIT_USTADZS,
 } from '../actions/ustadz';
 
 const initialState = {
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
       return { 
         ...state,
         data: action.data.data,
+      };
+    case LIMIT_USTADZS:
+      return {
+        ...state,
+        data: [...state.data, ...action.IsData],
       };
     default:
       return state;

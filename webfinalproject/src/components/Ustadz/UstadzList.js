@@ -17,7 +17,9 @@ class UstadzList extends Component {
           {/* Card image */}
           <div className="view overlay">
             <img 
-              className="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
+              className="card-img-top" 
+              src="https://mdbootstrap.com/img/Photos/Others/food.jpg"
+              alt="his"
             />
 
             <a>

@@ -20,7 +20,7 @@ const WHITELIST = {
     create: ['tanggal', 'waktu', 'tema', 'tempat'],
     update: ['tanggal', 'waktu', 'tema', 'tempat'],
   },
-  
+ 
   users: {
     create: ['email', 'username', 'password', 'akses', 'name'],
   },

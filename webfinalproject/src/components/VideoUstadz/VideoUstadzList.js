@@ -39,7 +39,10 @@ class VideoUstadzList extends Component {
       >
         <div className="card">
           <div className="view overlay">
-            <img className="card-img-top" src={linkCover} />
+            <img
+              alt={linkCover}
+              className="card-img-top" src={linkCover}
+            />
             <a>
               <div className="mask rgba-white-slight waves-effect waves-light" />
             </a>
@@ -85,7 +88,7 @@ class VideoUstadzList extends Component {
           <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
             <ul className="list-unstyled list-inline font-small">
               <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />{video.updatedAt}</li>
-              <li className="list-inline-item"><a href="#" className="white-text">{video.author.name}</a></li>
+              <li className="list-inline-item"><a href="" className="white-text">{video.author.name}</a></li>
             </ul>
           </div>
         </div>

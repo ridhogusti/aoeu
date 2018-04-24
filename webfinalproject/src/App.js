@@ -45,6 +45,7 @@ class App extends Component {
           <Route path="/:username/artikel" component={UstadzApp} />
           <Route path="/:username/audio" component={UstadzApp} />
           <Route path="/:username/jadwal" component={UstadzApp} />
+          <Route path="/:username/tentang" component={UstadzApp} />
 
         </Switch>
       </div>

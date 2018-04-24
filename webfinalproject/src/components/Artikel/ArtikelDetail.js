@@ -13,8 +13,9 @@ class ArtikelDetail extends Component {
         <div className="row">
           <div className="col-md-12">
             <div className="card card-cascade wider reverse">
-              <div className="view overlay">
+              <div className="view overlay mx-auto">
                 <img
+                  alt={uriImage}
                   src={uriImage} 
                   className="img-fluid"
                 />
@@ -27,7 +28,7 @@ class ArtikelDetail extends Component {
                   <a className="font-weight-bold">{location.state.artikel.title}</a>
                 </h2>
                 <p>Written by
-                  <a>{location.state.artikel.author.name}</a>, {location.state.artikel.updatedAt}</p>
+                  <a> {location.state.artikel.author.name}</a>, {location.state.artikel.updatedAt}</p>
               </div>
             </div>
             <div className="excerpt mt-5">

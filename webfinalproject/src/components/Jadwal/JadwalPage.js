@@ -91,7 +91,7 @@ class AudioPage extends Component {
               {/* Card image*/}
               <div className="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
                 <div />
-                <a href className="white-text mx-3">Jadwal Kegiatan</a>
+                <a href="" className="white-text mx-3">Jadwal Kegiatan</a>
                 <div />
               </div>
               {/* /Card image*/}

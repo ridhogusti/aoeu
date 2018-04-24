@@ -65,11 +65,18 @@ UserSchema.pre('save', function (next) {
 
 UserSchema.statics = {
 
-  listUstadz({ skip = 0, limit = 10 } = {}) {
+  listUstadz({ skip = 0, limit = 4 } = {}) {
     return this.find()
-      .sort({ createAt: -1 })
+      .sort({ createdAt: 1 })
       .skip(skip)
       .limit(limit);
+  },
+
+  listLimitUmum(limit) {
+    return this.find()
+      .sort({ createdAt: -1 })
+      .skip(4 + limit)
+      .limit(4);
   },
 };
 

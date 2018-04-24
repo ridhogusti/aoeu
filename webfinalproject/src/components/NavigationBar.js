@@ -25,7 +25,7 @@ class NavigationBar extends React.Component {
 
     const userLinks = (
       <ul className="navbar-nav ml-auto nav-flex-icons">
-        <li className="nav-item"> <a href="#" onClick={this.logout} className="nav-link waves-effect waves-light" >Logout</a> </li>
+        <li className="nav-item"> <a href="javascript" onClick={this.logout} className="nav-link waves-effect waves-light" >Logout</a> </li>
       </ul>
     );
 
@@ -68,9 +68,9 @@ class NavigationBar extends React.Component {
                 className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               >Dropdown</a>
               <div className="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
-                <a className="dropdown-item waves-effect waves-light" href="#">Action</a>
-                <a className="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                <a className="dropdown-item waves-effect waves-light" href="#">Something else here</a>
+                <a className="dropdown-item waves-effect waves-light" href="javascript">Action</a>
+                <a className="dropdown-item waves-effect waves-light" href="javascript">Another action</a>
+                <a className="dropdown-item waves-effect waves-light" href="javascript">Something else here</a>
               </div>
             </li>
           </ul>

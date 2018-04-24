@@ -8,6 +8,7 @@ import ModalArtikelUstadz from './components/ArtikelUstadz/ModalArtikelUstadz';
 import ModalVideoUstadz from './components/VideoUstadz/ModalVideoUstadz';
 import ModalAudioUstadz from './components/AudioUstadz/ModalAudioUstadz';
 import ModalJadwalUstadz from './components/JadwalUstadz/ModalJadwalUstadz';
+import TentangUstadz from './components/TentangUstadz/TentangUstadzPage';
 
 // import requireAuth from './utils/requireAuth';
 import NavigationBar from './components/NavigationBar2';
@@ -15,7 +16,7 @@ import FlashMessagesList from './components/flash/FlashMessagesList';
 
 class UstadzApp extends Component {
   render() {
-    console.log(this.props.match.params.username);
+    // console.log(this.props.match.params.username);
     return (
       <div >
         <NavigationBar namaUstadz={this.props.match.params.username} />
@@ -39,6 +40,7 @@ class UstadzApp extends Component {
           <Route path="/:username/jadwal/edit/:id" component={ModalJadwalUstadz} />
           <Route path="/:username/jadwal/add" component={ModalJadwalUstadz} />
           <Route path="/:username/jadwal" component={JadwalUstadz} />
+          <Route path="/:username/tentang" component={TentangUstadz} />
         </Switch>
       </div>
         

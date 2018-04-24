@@ -70,46 +70,53 @@ class VideoDetail extends Component {
           }}
         >
           {
-            this.props.videos.map(video => (
-              <div
-                style={{
-                  marginTop: 40,
-                }}
-                className="col-3"
-              >
-                <div className="card">
-                  <div className="view overlay">
-                    <img className="card-img-top" src={linkCover} />
-                    <a>
-                      <div className="mask rgba-white-slight waves-effect waves-light" />
-                    </a>
-                  </div>
-                  <Link
-                    to={{
-                      pathname: `/video/detail/${video._id}`,
-                      state: { video },
-                    }}
-                    className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"
-                  >
-                    <i className="fa fa-chevron-right pl-1" />
-                  </Link>
+            this.props.videos.map((video, i) => {
+              const nomor = i;
+              return (
+                <div
+                  key={nomor}
+                  style={{
+                    marginTop: 40,
+                  }}
+                  className="col-3"
+                >
+                  <div className="card">
+                    <div className="view overlay">
+                      <img
+                        alt={linkCover}
+                        className="card-img-top" src={linkCover}
+                      />
+                      <a>
+                        <div className="mask rgba-white-slight waves-effect waves-light" />
+                      </a>
+                    </div>
+                    <Link
+                      to={{
+                        pathname: `/video/detail/${video._id}`,
+                        state: { video },
+                      }}
+                      className="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3 waves-effect waves-light"
+                    >
+                      <i className="fa fa-chevron-right pl-1" />
+                    </Link>
 
-                  <div className="card-body">
-                    <h4 className="card-title">{video.title}</h4>
-                    <hr />
+                    <div className="card-body">
+                      <h4 className="card-title">{video.title}</h4>
+                      <hr />
             
-                    {/* <div dangerouslySetInnerHTML={{ __html: artikel.text }} /> */}
+                      {/* <div dangerouslySetInnerHTML={{ __html: artikel.text }} /> */}
             
-                  </div>
-                  <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
-                    <ul className="list-unstyled list-inline font-small">
-                      <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />{video.updatedAt}</li>
-                      <li className="list-inline-item"><a href="#" className="white-text">{video.author.name}</a></li>
-                    </ul>
+                    </div>
+                    <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                      <ul className="list-unstyled list-inline font-small">
+                        <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />{video.updatedAt}</li>
+                        <li className="list-inline-item"><a href="" className="white-text">{video.author.name}</a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           }
         </div> 
         <div 

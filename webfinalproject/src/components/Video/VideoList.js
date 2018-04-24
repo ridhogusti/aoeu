@@ -17,6 +17,7 @@ class VideoList extends Component {
           {/* Card image */}
           <div className="view overlay">
             <img 
+              alt={uriImage}
               className="card-img-top" src={uriImage}
             />
             {/* <span
@@ -74,7 +75,7 @@ class VideoList extends Component {
           <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
             <ul className="list-unstyled list-inline font-small">
               <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />{video.updatedAt}</li>
-              <li className="list-inline-item"><a href="#" className="white-text">{video.author.name}</a></li>
+              <li className="list-inline-item"><a className="white-text">{video.author.name}</a></li>
             </ul>
           </div>
         </div>

@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/ustadz', UserController.getUstadz);
+router.get('/:limit/umum', UserController.limitUmum);
 
 router.post('/signup', 
   // validate(UserController.validation.create),

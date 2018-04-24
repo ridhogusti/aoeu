@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-import { Link } from 'react-router-dom';
 import JadwalUstadzList from './JadwalUstadzList';
 import './styleArtikelUstadz.css';
 import { createJadwal, fetchJadwals, deleteJadwal, limitJadwal } from '../../actions/jadwal';
@@ -142,7 +141,7 @@ class JadwalUstadzPage extends Component {
         >
 
           <div className="col-4" />
-          <div className="col-4">
+          <div className="col-4 text-center">
             <button type="button" onClick={this.limitArtikell} className="btn btn-default">Load More</button>
           </div> 
           <div className="col-4" />

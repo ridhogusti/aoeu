@@ -14,8 +14,8 @@ class NavigationBar extends React.Component {
     this.logout = this.logout.bind(this);
   }
   componentDidMount() {
-    console.log(this.props.namaUstadz, 'dari navbar');
-    this.props.fetchArtikels(this.props.namaUstadz);
+    // console.log(this.props.namaUstadz, 'dari navbar');
+    // this.props.fetchArtikels(this.props.namaUstadz);
   }
   logout(e) {
     e.preventDefault();
@@ -27,7 +27,7 @@ class NavigationBar extends React.Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
-    console.log(this.props.artikels.length);
+    // console.log(this.props.artikels.length);
 
     const userLinks = (
       <ul className="navbar-nav ml-auto nav-flex-icons">
@@ -40,27 +40,34 @@ class NavigationBar extends React.Component {
       
     );
 
-    const urlUstadz = `/${this.props.namaUstadz}/artikel/`;
+    const urlUstadz = `/${this.props.namaUstadz}/artikel`;
     const urlUstadzVideo = `/${this.props.namaUstadz}/video`;
     const urlUstadzAudio = `/${this.props.namaUstadz}/audio`;
     const urlUstadzJadwal = `/${this.props.namaUstadz}/jadwal`;
+    const urlUstadzTentang = `/${this.props.namaUstadz}/tentang`;
 
     return (
       <div>
-        <div
-          style={{
-            width: '100%',
-            marginTop: '-25px',
-            height: '100px',
-            background: '#009688',
-            position: 'fixed',
-            zIndex: '3',
-          }}
-        />
         {/* Avatar*/}
         <div
           className="row"
         >
+          <div
+            style={{
+              position: 'fixed',
+              zIndex: '3',
+            }}
+            className="col-12"
+          >
+            <div
+              style={{
+                // width: '100%',
+                marginTop: '-25px',
+                height: '100px',
+                background: '#009688',
+              }}
+            />
+          </div>
         
           <div className="col-3">
             <div
@@ -117,8 +124,9 @@ class NavigationBar extends React.Component {
                   <li className={this.state.linkActive === `/${this.props.namaUstadz}/jadwal` ? 'nav-item active' : 'nav-item'}>
                     <Link to={urlUstadzJadwal} onClick={() => this.activeLink(urlUstadzJadwal)} className="nav-link waves-effect waves-light" > Jadwal Kegiatan </Link>
                   </li>
-                  <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
-                    <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>
+                  <li className={this.state.linkActive === `/${this.props.namaUstadz}/tentang` ? 'nav-item active' : 'nav-item'}>
+                    {/* <Link to={urlUstadzTentang} onClick={() => this.activeLink(urlUstadzTentang)} className="nav-link waves-effect waves-light"> Tentang </Link> */}
+                    <a href={urlUstadzTentang} onClick={() => this.activeLink(urlUstadzTentang)} className="nav-link waves-effect waves-light">Tentang</a>
                   </li>
                   { isAuthenticated ? userLinks : guestLinks }
                 </ul>

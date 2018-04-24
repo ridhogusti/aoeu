@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import jwtDecode from 'jwt-decode';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import SweetAlert from 'sweetalert-react';
 import '../../../node_modules/sweetalert/dist/sweetalert.css';
 // import auth from '../../reducers/auth';
 
 class AudioUstadzList extends Component {
   state = {
-    show: '',
+    show: false,
   }
 
   delJadwal = id => {

@@ -27,7 +27,7 @@ class EventForm extends React.Component {
   }
 
   render() {
-    const { title, errors, isLoading } = this.state;
+    const { title, errors } = this.state;
 
     return (
       <form onSubmit={this.onSubmit}>

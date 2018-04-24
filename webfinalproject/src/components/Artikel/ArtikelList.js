@@ -16,7 +16,10 @@ class ArtikelList extends Component {
         <div className="card">
           {/* Card image */}
           <div className="view overlay">
-            <img className="card-img-top" src={uriImage} />
+            <img 
+              alt={uriImage}
+              className="card-img-top" src={uriImage}
+            />
             <a>
               <div className="mask rgba-white-slight waves-effect waves-light" />
             </a>
@@ -49,7 +52,7 @@ class ArtikelList extends Component {
           <div className="rounded-bottom mdb-color lighten-3 text-center pt-3">
             <ul className="list-unstyled list-inline font-small">
               <li className="list-inline-item pr-2 white-text"><i className="fa fa-clock-o pr-1" />{artikel.updatedAt}</li>
-              <li className="list-inline-item"><a href="#" className="white-text">{artikel.author.name}</a></li>
+              <li className="list-inline-item"><a href="" className="white-text">{artikel.author.name}</a></li>
             </ul>
           </div>
         </div>

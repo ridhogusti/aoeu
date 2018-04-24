@@ -23,6 +23,7 @@ const artikels = require('./routes/artikels');
 const videos = require('./routes/videos');
 const audios = require('./routes/audios');
 const jadwals = require('./routes/jadwals');
+const tentang = require('./routes/tentang');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -49,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/tentang', tentang);
 
 app.use(formidable({
   encoding: 'utf-8',
