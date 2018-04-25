@@ -13,6 +13,8 @@ import editjadwal from './reducers/editjadwal';
 import jadwals from './reducers/jadwals';
 import tentang from './reducers/tentang';
 import tanya from './reducers/tanya';
+import countArtikel from './reducers/countArtikel';
+import countVideo from './reducers/countVideo';
 
 export default combineReducers({
   flashMessages,
@@ -28,4 +30,6 @@ export default combineReducers({
   jadwals,
   tentang,
   tanya,
+  countArtikel,
+  countVideo,
 });

@@ -22,6 +22,7 @@ const router = express.Router();
 
 // router.get('/', authJwt, ArtikelController.getList);
 router.get('/:username', VideoController.getByUsername);
+router.get('/:username/count', VideoController.getCountByUsername);
 router.get('/ambil/:id', VideoController.getById);
 router.get('/:limit/umum', VideoController.limitUmum);
 router.get('/:limit/:username', VideoController.limit);

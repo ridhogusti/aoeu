@@ -134,7 +134,7 @@ class TanyaUstadzPage extends Component {
                 </div>
           
               </div>
-              <div 
+              {/* <div 
                 style={{
                   marginRight: '8%',
                   marginLeft: '8%',
@@ -148,7 +148,7 @@ class TanyaUstadzPage extends Component {
                 </div> 
                 <div className="col-4" />
 
-              </div>
+              </div> */}
             </div>
             
             : 

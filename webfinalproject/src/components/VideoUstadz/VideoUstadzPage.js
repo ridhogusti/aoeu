@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import VideoUstadzList from './VideoUstadzList';
 import './styleArtikelUstadz.css';
-import { createVideo, fetchVideos, deleteVideo, limitVideo } from '../../actions/video';
+import { createVideo, fetchVideos, deleteVideo, limitVideo, getCountVideo } from '../../actions/video';
 
 class VideoUstadzPage extends Component {
   constructor(props) {
@@ -18,8 +18,9 @@ class VideoUstadzPage extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchVideos(this.props.match.params.username);
+  async componentDidMount() {
+    await this.props.fetchVideos(this.props.match.params.username);
+    await this.props.getCountVideo(this.props.match.params.username);
     window.scrollTo(0, 0);
   }
   handleEditorChange = (e) => {
@@ -41,6 +42,57 @@ class VideoUstadzPage extends Component {
       };
     } else {
       akses = jwtDecode(localStorage.getItem('jwtToken')); 
+    }
+
+    let loadMore;
+    let loadVideo;
+    if (this.props.countVideo === this.props.videos.length) {
+      console.log('aoeu');
+    } else {
+      loadMore = (
+        <div 
+          style={{
+            marginRight: '8%',
+            marginLeft: '8%',
+          }}
+          className="row"
+        >
+
+          <div className="col-4" />
+          <div className="col-4">
+            <button type="button" onClick={this.limitArtikell} className="btn btn-default">Load More</button>
+          </div> 
+          <div className="col-4" />
+
+        </div>
+      );
+    }
+
+    if (this.props.videos.length === 0) {
+      loadVideo = (<div>Belum ada video</div>);
+    } else {
+      loadVideo = (
+        <div
+          className="row" 
+          
+          style={{
+            marginRight: '8%',
+            marginLeft: '8%',
+          }}
+        >
+
+          {
+            this.props.videos.map(video => (<VideoUstadzList
+              paramsUstadz={this.props.match.params.username} 
+              video={video} 
+              key={video._id}
+              modeEdit={this.modeEdit}
+              deleteVideo={this.props.deleteVideo}
+            />))
+          }
+          
+        </div>
+      );
     }
     
     return (
@@ -66,43 +118,8 @@ class VideoUstadzPage extends Component {
           </div>
           <div className="col-4" />
         </div>
-
-        <div
-          className="row" 
-          
-          style={{
-            marginRight: '8%',
-            marginLeft: '8%',
-          }}
-        >
-
-          {
-            this.props.videos.map(video => (<VideoUstadzList
-              paramsUstadz={this.props.match.params.username} 
-              video={video} 
-              key={video._id}
-              modeEdit={this.modeEdit}
-              deleteVideo={this.props.deleteVideo}
-            />))
-          }
-          
-        </div>
-
-        <div 
-          style={{
-            marginRight: '8%',
-            marginLeft: '8%',
-          }}
-          className="row"
-        >
-
-          <div className="col-4" />
-          <div className="col-4">
-            <button type="button" onClick={this.limitArtikell} className="btn btn-default">Load More</button>
-          </div> 
-          <div className="col-4" />
-
-        </div>
+        {loadVideo}
+        {loadMore}
         
       </div>
     );
@@ -113,6 +130,7 @@ function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
     videos: state.videos.data,
+    countVideo: state.countVideo.data.data,
   };
 }
 
@@ -121,5 +139,6 @@ export default connect(mapStateToProps, {
   fetchVideos,
   deleteVideo,
   limitVideo,
+  getCountVideo,
 })(VideoUstadzPage);
 

@@ -68,7 +68,7 @@ class ArtikelUstadzList extends Component {
             { 
               akses.akses === 'ustadz' && akses.username === this.props.paramsUstadz ? 
                 <div className="row justify-content-center">
-                  <button type="button" onClick={() => this.props.modeEdit(artikel)} className="btn btn-info btn-rounded">Ubah</button>
+                  {/* <button type="button" onClick={() => this.props.modeEdit(artikel)} className="btn btn-info btn-rounded">Ubah</button> */}
                   <Link
                     to={{
                       pathname: `/${this.props.paramsUstadz}/artikel/edit/${artikel._id}`,

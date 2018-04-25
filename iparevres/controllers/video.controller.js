@@ -30,6 +30,20 @@ export const validation = {
     },
   },
 };
+export async function getCountByUsername(req, res, next) {
+  try {
+    let jumlah = 0;
+    const count = await Video.count({ 'author.username': req.params.username }, (err, result) => {
+      jumlah = result;
+    });
+    return res.status(HTTPStatus.OK).json(
+      jumlah
+    );
+  } catch (err) {
+    err.status = HTTPStatus.BAD_REQUEST;
+    return next(err);
+  }
+}
 
 export async function getList(req, res, next) {
   try {

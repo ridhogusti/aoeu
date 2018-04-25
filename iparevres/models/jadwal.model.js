@@ -73,7 +73,7 @@ JadwalSchema.statics = {
   },
   listByUsername({ skip = 0, limit = 4 } = {}, username) {
     return this.find({ 'author.username': username })
-      .sort({ tanggal: -1 })
+      .sort({ tanggal: -1, waktu: -1 })
       .skip(skip)
       .limit(limit);
   },

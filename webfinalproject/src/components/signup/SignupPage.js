@@ -8,6 +8,7 @@ import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class SignupPage extends React.Component {
   componentWillMount() {
+    window.scrollTo(0, 0);
     if (this.props.isAuthenticated) {
       this.props.history.push('/');
     } 
@@ -19,6 +20,7 @@ class SignupPage extends React.Component {
         <div className="row">
           <div className="col-4" />
           <div className="col-4">
+            <br />
             <SignupForm
               isUserExists={isUserExists}
               userSignupRequest={userSignupRequest}

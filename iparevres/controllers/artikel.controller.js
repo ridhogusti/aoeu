@@ -55,6 +55,21 @@ export async function getList(req, res, next) {
   }
 }
 
+export async function getCountByUsername(req, res, next) {
+  try {
+    let jumlah = 0;
+    const count = await Artikel.count({ 'author.username': req.params.username }, (err, result) => {
+      jumlah = result;
+    });
+    return res.status(HTTPStatus.OK).json(
+      jumlah
+    );
+  } catch (err) {
+    err.status = HTTPStatus.BAD_REQUEST;
+    return next(err);
+  }
+}
+
 export async function getByUsername(req, res, next) {
   try {
     const promise = await Promise.all([
@@ -232,8 +247,15 @@ export async function updateArtikel(req, res, next) {
       }
 
       Object.keys(body).forEach(key => {
-        artikel[key] = body[key];
+        if (body[key] === 'undefined') {
+          artikel[key] = artikel[key];
+        } else {
+          artikel[key] = body[key];
+        }
       });
+      // Object.keys(body).forEach(key => {
+      //   artikel[key] = body[key];
+      // });
 
       return res.status(HTTPStatus.OK).json(await artikel.save());
     } catch (err) {

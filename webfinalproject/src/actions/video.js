@@ -4,6 +4,7 @@ import axios from 'axios';
 export const FETCH_VIDEOS = 'FETCH_VIDEOS';
 export const FETCH_ALL_VIDEOS = 'FETCH_ALL_VIDEOS';
 export const FETCH_VIDEO = 'FETCH_VIDEO';
+export const COUNT_VIDEO = 'COUNT_VIDEO';
 
 export const LIMIT_VIDEO = 'LIMIT_VIDEO';
 
@@ -16,6 +17,11 @@ export const DELETED_VIDEO = 'DELETED_VIDEO';
 export const SEARCH_ARTIKEL = 'SEARCH_ARTIKEL';
 export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
+export function getCountVideo(args) {
+  console.log(args, 'dari action video');
+  return dispatch => axios.get(`http://localhost:3000/videos/${args}/count`)
+    .then(data => dispatch({ type: COUNT_VIDEO, data }));
+}
 export function fetchVideos(args) {
   console.log(args, 'dari action artikel');
   return dispatch => axios.get(`http://localhost:3000/videos/${args}`)

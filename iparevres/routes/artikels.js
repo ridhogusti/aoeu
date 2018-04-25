@@ -22,6 +22,7 @@ const router = express.Router();
 
 // router.get('/', authJwt, ArtikelController.getList);
 router.get('/:username', ArtikelController.getByUsername);
+router.get('/:username/count', ArtikelController.getCountByUsername);
 router.get('/ambil/:id', ArtikelController.getById);
 router.get('/:limit/umum', ArtikelController.limitUmum);
 router.get('/:limit/:username', ArtikelController.limit);

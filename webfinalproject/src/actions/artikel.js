@@ -4,6 +4,7 @@ import axios from 'axios';
 export const FETCH_ARTIKELS = 'FETCH_ARTIKELS';
 export const FETCH_ALL_ARTIKELS = 'FETCH_ALL_ARTIKELS';
 export const FETCH_ARTIKEL = 'FETCH_ARTIKEL';
+export const COUNT_ARTIKEL = 'COUNT_ARTIKEL';
 
 export const LIMIT_ARTIKEL = 'LIMIT_ARTIKEL';
 
@@ -16,6 +17,11 @@ export const DELETED_ARTIKEL = 'DELETED_ARTIKEL';
 export const SEARCH_ARTIKEL = 'SEARCH_ARTIKEL';
 export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
+export function getCountArtikel(args) {
+  console.log(args, 'dari action artikel');
+  return dispatch => axios.get(`http://localhost:3000/artikels/${args}/count`)
+    .then(data => dispatch({ type: COUNT_ARTIKEL, data }));
+}
 export function fetchArtikels(args) {
   console.log(args, 'dari action artikel');
   return dispatch => axios.get(`http://localhost:3000/artikels/${args}`)

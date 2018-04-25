@@ -9,6 +9,7 @@ class LoginPage extends React.Component {
   //   super(props);
   // }
   componentWillMount() {
+    window.scrollTo(0, 0);
     if (this.props.isAuthenticated) {
       console.log('oetuh');
       this.props.history.push('/');
@@ -20,6 +21,7 @@ class LoginPage extends React.Component {
         <div className="row">
           <div className="col-4" />
           <div className="col-4">
+            <br />
             <LoginForm />
           </div>
           <div className="col-4" />

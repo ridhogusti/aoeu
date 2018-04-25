@@ -70,10 +70,20 @@ class NavigationBar extends React.Component {
                 height: '100px',
                 background: '#009688',
               }}
-            />
+              className="text-center"
+            >
+              <br />
+              <h1
+                style={{
+                  color: '#fff',
+                }}
+              >
+                {this.props.namaUstadz}
+              </h1>
+            </div>
           </div>
         
-          <div className="col-3">
+          {/* <div className="col-3">
             <div
               className="col-3"
               style={{
@@ -85,7 +95,7 @@ class NavigationBar extends React.Component {
               <div className="avatar mx-auto white"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg" alt="avatar mx-auto white" className="rounded-circle img-fluid" />
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div
             className="col-12"
@@ -105,6 +115,8 @@ class NavigationBar extends React.Component {
               >
                 <span className="navbar-toggler-icon" />
               </button>
+              <ul className="mr-auto" /> <ul className="mr-auto" /> <ul className="mr-auto" /> <ul className="mr-auto" /> <ul className="mr-auto" />
+              <ul className="mr-auto" /> <ul className="mr-auto" /> 
               <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
                 <ul className=" mr-auto" />
                 <ul className="navbar-nav mr-auto">
