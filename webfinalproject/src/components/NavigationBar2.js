@@ -26,12 +26,16 @@ class NavigationBar extends React.Component {
   }
 
   render() {
+    const urlUstadzTanya = `/${this.props.namaUstadz}/tanya`;
     const { isAuthenticated } = this.props.auth;
     // console.log(this.props.artikels.length);
 
     const userLinks = (
       <ul className="navbar-nav ml-auto nav-flex-icons">
-        <li className="nav-item"> <Link to="/namaustadz/tanyajawab" className="nav-link waves-effect waves-light" >Tanya & Jawab</Link> </li>
+        {/* <li className="nav-item"> <Link to="/namaustadz/tanyajawab" className="nav-link waves-effect waves-light" >Tanya & Jawab</Link> </li> */}
+        <li className={this.state.linkActive === `/${this.props.namaUstadz}/tanya` ? 'nav-item active' : 'nav-item'}>
+          <Link to={urlUstadzTanya} onClick={() => this.activeLink(urlUstadzTanya)} className="nav-link waves-effect waves-light"> Tanya & Jawab </Link>
+        </li>
       </ul>
     );
 
@@ -109,10 +113,6 @@ class NavigationBar extends React.Component {
                       to={urlUstadz} 
                       onClick={() => this.activeLink(urlUstadz)} className="nav-link text-center waves-effect waves-light"
                     > Artikel 
-                    
-                      <br />
-                        250
-
                     </Link>
                   </li>
                   <li className={this.state.linkActive === `/${this.props.namaUstadz}/video` ? 'nav-item active' : 'nav-item'}>

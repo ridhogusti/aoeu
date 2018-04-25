@@ -12,6 +12,7 @@ import editaudio from './reducers/editaudio';
 import editjadwal from './reducers/editjadwal';
 import jadwals from './reducers/jadwals';
 import tentang from './reducers/tentang';
+import tanya from './reducers/tanya';
 
 export default combineReducers({
   flashMessages,
@@ -26,4 +27,5 @@ export default combineReducers({
   editjadwal,
   jadwals,
   tentang,
+  tanya,
 });

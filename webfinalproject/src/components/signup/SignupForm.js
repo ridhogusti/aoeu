@@ -43,7 +43,7 @@ class SignupForm extends React.Component {
         username,
         email,
         password,
-        akses: 'ustadz',
+        akses: 'umat',
         name,
       };
       console.log(data);

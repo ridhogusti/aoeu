@@ -9,6 +9,7 @@ import ModalVideoUstadz from './components/VideoUstadz/ModalVideoUstadz';
 import ModalAudioUstadz from './components/AudioUstadz/ModalAudioUstadz';
 import ModalJadwalUstadz from './components/JadwalUstadz/ModalJadwalUstadz';
 import TentangUstadz from './components/TentangUstadz/TentangUstadzPage';
+import TanyaUstadz from './components/TanyaUstadz/TanyaUstadzPage';
 
 // import requireAuth from './utils/requireAuth';
 import NavigationBar from './components/NavigationBar2';
@@ -41,6 +42,7 @@ class UstadzApp extends Component {
           <Route path="/:username/jadwal/add" component={ModalJadwalUstadz} />
           <Route path="/:username/jadwal" component={JadwalUstadz} />
           <Route path="/:username/tentang" component={TentangUstadz} />
+          <Route path="/:username/tanya" component={TanyaUstadz} />
         </Switch>
       </div>
         

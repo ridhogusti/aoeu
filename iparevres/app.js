@@ -24,6 +24,7 @@ const videos = require('./routes/videos');
 const audios = require('./routes/audios');
 const jadwals = require('./routes/jadwals');
 const tentang = require('./routes/tentang');
+const tanya = require('./routes/tanya');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -52,6 +53,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/tentang', tentang);
 
+app.use('/tanya', tanya);
 app.use(formidable({
   encoding: 'utf-8',
   uploadDir: path.join(__dirname, 'public/images'),
