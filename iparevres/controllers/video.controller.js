@@ -80,7 +80,7 @@ export async function getByUsername(req, res, next) {
       return arr;
     }, []);
     console.log(videos, 'data bro');
-
+    
     return res.status(HTTPStatus.OK).json(
       videos
     );
