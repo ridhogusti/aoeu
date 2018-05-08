@@ -31,11 +31,12 @@ class App extends Component {
         <Switch>
           {/* <Route path="/signup" component={requireAuth(SignupPage)} /> */}
           <Route path="/signup" component={SignupPage} />
-          <Route exact path='/' component={Greetings} />
+          {/* <Route exact path='/' component={Greetings} /> */}
           <Route path="/login" component={LoginPage} />
           <Route path="/new-event" component={requireAuth(NewEventPage)} />
           <Route path="/artikel/detail/:id" component={ArtikelDetail} />
           <Route path="/artikel" component={ArtikelPage} />
+          <Route path="/" component={ArtikelPage} />
           <Route path="/video/detail/:id" component={VideoDetail} />
           <Route path="/video" component={VideoPage} />
           <Route path="/audio" component={AudioPage} />
