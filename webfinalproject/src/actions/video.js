@@ -19,26 +19,26 @@ export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
 export function getCountVideo(args) {
   console.log(args, 'dari action video');
-  return dispatch => axios.get(`http://localhost:3000/videos/${args}/count`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/videos/${args}/count`)
     .then(data => dispatch({ type: COUNT_VIDEO, data }));
 }
 export function fetchVideos(args) {
   console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/videos/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/videos/${args}`)
     .then(data => dispatch({ type: FETCH_VIDEOS, data }));
 }
 
 export function fetchAllVideos() {
-  return dispatch => axios.get('http://localhost:3000/videos/')
+  return dispatch => axios.get('http://maridakwah.com:3000/videos/')
     .then(data => dispatch({ type: FETCH_ALL_VIDEOS, data }));
 }
 
 export function fetchVideo(args) {
-  return dispatch => axios.get(`http://localhost:3000/videos/ambil/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/videos/ambil/${args}`)
     .then(data => dispatch({ type: FETCH_VIDEO, data }));
 }
 export function createVideo(data) {
-  return dispatch => axios.post('http://localhost:3000/videos', data).then(res => {
+  return dispatch => axios.post('http://maridakwah.com:3000/videos', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: CREATE_VIDEO, IsData });
@@ -46,7 +46,7 @@ export function createVideo(data) {
 }
 
 export function updateVideo(data) {
-  return dispatch => axios.put(`http://localhost:3000/videos/${data.get('_id')}`, data).then(res => {
+  return dispatch => axios.put(`http://maridakwah.com:3000/videos/${data.get('_id')}`, data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: UPDATE_VIDEO, IsData });
@@ -55,7 +55,7 @@ export function updateVideo(data) {
 
 export function deleteVideo(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/videos/${id}`).then(res => {
+  return dispatch => axios.delete(`http://maridakwah.com:3000/videos/${id}`).then(res => {
     console.log(res, 'respone dari create');
     dispatch({ type: DELETED_VIDEO, id });
   });
@@ -63,7 +63,7 @@ export function deleteVideo(id) {
 
 export function limitVideoUmum(limit) {
   console.log(limit, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/videos/${limit}/umum`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/videos/${limit}/umum`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_VIDEO, IsData });
@@ -71,7 +71,7 @@ export function limitVideoUmum(limit) {
 }
 export function limitVideo(limit, username) {
   console.log(limit, username, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/videos/${limit}/${username}`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/videos/${limit}/${username}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_VIDEO, IsData });

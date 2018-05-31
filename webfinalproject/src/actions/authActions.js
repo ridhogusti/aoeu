@@ -20,7 +20,7 @@ export function logout() {
 }
 
 export function login(data) {
-  return dispatch => axios.post('http://localhost:3000/users/login', data).then(res => {
+  return dispatch => axios.post('http://maridakwah.com:3000/users/login', data).then(res => {
     const token = res.data.token;
     localStorage.setItem('jwtToken', token);
     setAuthorizationToken(token);

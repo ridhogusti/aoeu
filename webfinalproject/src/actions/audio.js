@@ -18,21 +18,21 @@ export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
 export function fetchAudios(args) {
   console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/audios/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/audios/${args}`)
     .then(data => dispatch({ type: FETCH_AUDIOS, data }));
 }
 
 export function fetchAllAudios() {
-  return dispatch => axios.get('http://localhost:3000/audios/')
+  return dispatch => axios.get('http://maridakwah.com:3000/audios/')
     .then(data => dispatch({ type: FETCH_ALL_AUDIOS, data }));
 }
 
 export function fetchAudio(args) {
-  return dispatch => axios.get(`http://localhost:3000/audios/ambil/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/audios/ambil/${args}`)
     .then(data => dispatch({ type: FETCH_AUDIO, data }));
 }
 export function createAudio(data) {
-  return dispatch => axios.post('http://localhost:3000/audios', data).then(res => {
+  return dispatch => axios.post('http://maridakwah.com:3000/audios', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: CREATE_AUDIO, IsData });
@@ -40,7 +40,7 @@ export function createAudio(data) {
 }
 
 export function updateAudio(data) {
-  return dispatch => axios.put(`http://localhost:3000/audios/${data.get('_id')}`, data).then(res => {
+  return dispatch => axios.put(`http://maridakwah.com:3000/audios/${data.get('_id')}`, data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: UPDATE_AUDIO, IsData });
@@ -49,7 +49,7 @@ export function updateAudio(data) {
 
 export function deleteAudio(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/audios/${id}`).then(res => {
+  return dispatch => axios.delete(`http://maridakwah.com:3000/audios/${id}`).then(res => {
     console.log(res, 'respone dari create');
     dispatch({ type: DELETED_AUDIO, id });
   });
@@ -57,7 +57,7 @@ export function deleteAudio(id) {
 
 export function limitAudioUmum(limit) {
   console.log(limit, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/audios/${limit}/umum`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/audios/${limit}/umum`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_AUDIO, IsData });
@@ -65,7 +65,7 @@ export function limitAudioUmum(limit) {
 }
 export function limitAudio(limit, username) {
   console.log(limit, username, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/audios/${limit}/${username}`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/audios/${limit}/${username}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_AUDIO, IsData });

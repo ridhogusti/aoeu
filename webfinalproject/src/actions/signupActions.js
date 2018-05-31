@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function userSignupRequest(userData) {
   console.log(userData);
-  return dispatch => axios.post('http://localhost:3000/users/signup', userData);
+  return dispatch => axios.post('http://maridakwah.com:3000/users/signup', userData);
   // return dispatch => fetch('http://localhost:3000/users/signup', {
   //   mode: 'no-cors',
   //   method: 'POST',

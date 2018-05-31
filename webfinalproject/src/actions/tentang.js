@@ -20,7 +20,7 @@ export const DELETED_PEKERJAAN = 'DELETED_PEKERJAAN';
 // export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
 export function fetchTentang(args) {
-  return dispatch => axios.get(`http://localhost:3000/tentang/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/tentang/${args}`)
     .then(data => {
       console.log(data);
       dispatch({ type: FETCH_TENTANG, data });
@@ -29,7 +29,7 @@ export function fetchTentang(args) {
 
 export function updateTentang(data) {
   console.log(data);
-  return dispatch => axios.put('http://localhost:3000/tentang/', data).then(res => {
+  return dispatch => axios.put('http://maridakwah.com:3000/tentang/', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: UPDATE_TENTANG, IsData });
@@ -40,7 +40,7 @@ export function updatePendidikan(id, data) {
   const dataa = {
     pendidikan: data,
   };
-  return dispatch => axios.put(`http://localhost:3000/tentang/pendidikan/${id}`, dataa).then(res => {
+  return dispatch => axios.put(`http://maridakwah.com:3000/tentang/pendidikan/${id}`, dataa).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: UPDATE_PENDIDKAN, IsData });
@@ -52,7 +52,7 @@ export function updatePekerjaan(id, data) {
     pekerjaan: data,
   };
   console.log(id, dataa, 'reducer');
-  return dispatch => axios.put(`http://localhost:3000/tentang/pekerjaan/${id}`, dataa).then(res => {
+  return dispatch => axios.put(`http://maridakwah.com:3000/tentang/pekerjaan/${id}`, dataa).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: UPDATE_PEKERJAAN, IsData });
@@ -60,7 +60,7 @@ export function updatePekerjaan(id, data) {
 }
 export function deletePekerjaan(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/tentang/pekerjaan/${id}`).then(res => {
+  return dispatch => axios.delete(`http://maridakwah.com:3000/tentang/pekerjaan/${id}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: DELETED_PEKERJAAN, IsData });
@@ -68,7 +68,7 @@ export function deletePekerjaan(id) {
 }
 export function deletePendidikan(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/tentang/pendidikan/${id}`).then(res => {
+  return dispatch => axios.delete(`http://maridakwah.com:3000/tentang/pendidikan/${id}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: DELETED_PENDIDIKAN, IsData });
