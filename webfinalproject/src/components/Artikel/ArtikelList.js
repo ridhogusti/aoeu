@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class ArtikelList extends Component {
   render() {
     const { artikel } = this.props;
-    const uriImage = `http://localhost:3000/images/${artikel.image}`;
+    const uriImage = `http://maridakwah.com:3000/images/${artikel.image}`;
     return (
       <div
         style={{

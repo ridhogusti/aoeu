@@ -36,7 +36,6 @@ class App extends Component {
           <Route path="/new-event" component={requireAuth(NewEventPage)} />
           <Route path="/artikel/detail/:id" component={ArtikelDetail} />
           <Route path="/artikel" component={ArtikelPage} />
-          <Route path="/" component={ArtikelPage} />
           <Route path="/video/detail/:id" component={VideoDetail} />
           <Route path="/video" component={VideoPage} />
           <Route path="/audio" component={AudioPage} />
@@ -48,6 +47,7 @@ class App extends Component {
           <Route path="/:username/jadwal" component={UstadzApp} />
           <Route path="/:username/tentang" component={UstadzApp} />
           <Route path="/:username/tanya" component={UstadzApp} />
+          <Route path="/" component={ArtikelPage} />
 
         </Switch>
       </div>

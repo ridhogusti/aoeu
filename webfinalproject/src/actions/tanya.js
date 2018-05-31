@@ -13,12 +13,12 @@ export const CREATE_JAWAB = 'CREATE_JAWAB';
 
 export function fetchTanyas(username, id) {
   // console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/tanya/${username}/${id}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/tanya/${username}/${id}`)
     .then(data => dispatch({ type: FETCH_TANYAS, data }));
 }
 
 export function fetchJadwal(args) {
-  return dispatch => axios.get(`http://localhost:3000/jadwals/ambil/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/ambil/${args}`)
     .then(data => dispatch({ type: FETCH_JADWAL, data }));
 }
 export function createTanya(tanya, username) {
@@ -27,7 +27,7 @@ export function createTanya(tanya, username) {
     username,
   };
   console.log(body, 'uaoneh');
-  return dispatch => axios.post('http://localhost:3000/tanya', body).then(res => {
+  return dispatch => axios.post('http://maridakwah.com:3000/tanya', body).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: CREATE_TANYA, IsData });
@@ -42,7 +42,7 @@ export function createJawab(idtanya, jawab) {
   };
   console.log(data);
 
-  return dispatch => axios.put('http://localhost:3000/tanya', data).then(res => {
+  return dispatch => axios.put('http://maridakwah.com:3000/tanya', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res;
     dispatch({ type: CREATE_JAWAB, IsData });
@@ -51,7 +51,7 @@ export function createJawab(idtanya, jawab) {
 
 export function limitJadwalUmum(limit) {
   console.log(limit, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/jadwals/${limit}/umum`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/${limit}/umum`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_JADWAL, IsData });
@@ -59,7 +59,7 @@ export function limitJadwalUmum(limit) {
 }
 export function limitJadwal(limit, username) {
   console.log(limit, username, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/jadwals/${limit}/${username}`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/${limit}/${username}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_JADWAL, IsData });

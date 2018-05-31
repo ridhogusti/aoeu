@@ -7,7 +7,7 @@ class ArtikelDetail extends Component {
   render() {
     const { location } = this.props;
     console.log(location);
-    const uriImage = `http://localhost:3000/images/${location.state.artikel.image}`;
+    const uriImage = `http://maridakwah.com:3000/images/${location.state.artikel.image}`;
     return (
       <section className="pt-5 mt-4 pb-3">
         <div className="row">

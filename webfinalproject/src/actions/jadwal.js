@@ -18,21 +18,21 @@ export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
 export function fetchJadwals(args) {
   console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/jadwals/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/${args}`)
     .then(data => dispatch({ type: FETCH_JADWALS, data }));
 }
 
 export function fetchAllJadwals() {
-  return dispatch => axios.get('http://localhost:3000/jadwals/')
+  return dispatch => axios.get('http://maridakwah.com:3000/jadwals/')
     .then(data => dispatch({ type: FETCH_ALL_JADWALS, data }));
 }
 
 export function fetchJadwal(args) {
-  return dispatch => axios.get(`http://localhost:3000/jadwals/ambil/${args}`)
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/ambil/${args}`)
     .then(data => dispatch({ type: FETCH_JADWAL, data }));
 }
 export function createJadwal(data) {
-  return dispatch => axios.post('http://localhost:3000/jadwals', data).then(res => {
+  return dispatch => axios.post('http://maridakwah.com:3000/jadwals', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: CREATE_JADWAL, IsData });
@@ -40,7 +40,7 @@ export function createJadwal(data) {
 }
 
 export function updateJadwal(data) {
-  return dispatch => axios.put(`http://localhost:3000/jadwals/${data.get('_id')}`, data).then(res => {
+  return dispatch => axios.put(`http://maridakwah.com:3000/jadwals/${data.get('_id')}`, data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: UPDATE_JADWAL, IsData });
@@ -49,7 +49,7 @@ export function updateJadwal(data) {
 
 export function deleteJadwal(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/jadwals/${id}`).then(res => {
+  return dispatch => axios.delete(`http://maridakwah.com:3000/jadwals/${id}`).then(res => {
     console.log(res, 'respone dari create');
     dispatch({ type: DELETED_JADWAL, id });
   });
@@ -57,7 +57,7 @@ export function deleteJadwal(id) {
 
 export function limitJadwalUmum(limit) {
   console.log(limit, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/jadwals/${limit}/umum`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/${limit}/umum`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_JADWAL, IsData });
@@ -65,7 +65,7 @@ export function limitJadwalUmum(limit) {
 }
 export function limitJadwal(limit, username) {
   console.log(limit, username, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/jadwals/${limit}/${username}`).then(res => {
+  return dispatch => axios.get(`http://maridakwah.com:3000/jadwals/${limit}/${username}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_JADWAL, IsData });
