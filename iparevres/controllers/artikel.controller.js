@@ -58,9 +58,11 @@ export async function getList(req, res, next) {
 export async function getCountByUsername(req, res, next) {
   try {
     let jumlah = 0;
+    console.log(req.params.username, 'count');
     const count = await Artikel.count({ 'author.username': req.params.username }, (err, result) => {
       jumlah = result;
     });
+    console.log(jumlah, 'jumlah count');
     return res.status(HTTPStatus.OK).json(
       jumlah
     );

@@ -30,9 +30,18 @@ class LoginForm extends React.Component {
         password,
       };
       this.setState({ errors: {}, isLoading: true });
-      console.log(data, 'test');
       this.props.login(data).then(
-        (res) => this.props.history.push('/'),
+        // (res) => this.props.history.push('/'),
+        (res) => {
+          if (this.props.user.akses === 'ustadz') {
+            return (
+              this.props.history.push('/artikel')
+            );
+          }
+          return (
+            this.props.history.push('/artikel')
+          );
+        },
         (err) => this.setState({ errors: err.response, isLoading: false })
         // (err) => console.log(err.response)
       );
@@ -131,4 +140,10 @@ LoginForm.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-export default withRouter(connect(null, { login })(LoginForm));
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user,
+  };
+}
+
+export default withRouter(connect(mapStateToProps, { login })(LoginForm));
