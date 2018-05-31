@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class AudioList extends Component {
   render() {
     const { audio } = this.props;
-    const linkAudio = `http://localhost:3000/audios/${audio.audio}`;
+    const linkAudio = `http://maridakwah.com:3000/audios/${audio.audio}`;
     return (
       <div
         style={{

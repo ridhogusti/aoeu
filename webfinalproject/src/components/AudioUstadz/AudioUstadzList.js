@@ -17,7 +17,7 @@ class AudioUstadzList extends Component {
   render() {
     const { audio } = this.props;
     // const { author } = artikel.author;
-    const linkAudio = `http://localhost:3000/audios/${audio.audio}`;
+    const linkAudio = `http://maridakwah.com:3000/audios/${audio.audio}`;
     // const linkCover = 'https://brightplanet.com/wp-content/uploads/2016/04/play-1073616_1280-1030x1030.png';
 
     let akses;

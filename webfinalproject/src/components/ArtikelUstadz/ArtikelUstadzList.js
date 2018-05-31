@@ -17,7 +17,7 @@ class ArtikelUstadzList extends Component {
   render() {
     const { artikel } = this.props;
     // const { author } = artikel.author;
-    const linkImage = `http://localhost:3000/images/${artikel.image}`;
+    const linkImage = `http://maridakwah.com:3000/images/${artikel.image}`;
 
     let akses;
 
