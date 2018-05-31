@@ -19,26 +19,26 @@ export const SEARCH_ARTIKEL_SUCCESS = 'SEARCH_ARTIKEL_SUCCESS';
 
 export function getCountArtikel(args) {
   console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${args}/count`)
+  return dispatch => axios.get(`http://maridakwah:3000/artikels/${args}/count`)
     .then(data => dispatch({ type: COUNT_ARTIKEL, data }));
 }
 export function fetchArtikels(args) {
   console.log(args, 'dari action artikel');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${args}`)
+  return dispatch => axios.get(`http://maridakwah:3000/artikels/${args}`)
     .then(data => dispatch({ type: FETCH_ARTIKELS, data }));
 }
 
 export function fetchAllArtikels() {
-  return dispatch => axios.get('http://localhost:3000/artikels/')
+  return dispatch => axios.get('http://maridakwah:3000/artikels/')
     .then(data => dispatch({ type: FETCH_ALL_ARTIKELS, data }));
 }
 
 export function fetchArtikel(args) {
-  return dispatch => axios.get(`http://localhost:3000/artikels/ambil/${args}`)
+  return dispatch => axios.get(`http://maridakwah:3000/artikels/ambil/${args}`)
     .then(data => dispatch({ type: FETCH_ARTIKEL, data }));
 }
 export function createArtikel(data) {
-  return dispatch => axios.post('http://localhost:3000/artikels', data).then(res => {
+  return dispatch => axios.post('http://maridakwah:3000/artikels', data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: CREATE_ARTIKEL, IsData });
@@ -46,7 +46,7 @@ export function createArtikel(data) {
 }
 
 export function updateArtikel(data) {
-  return dispatch => axios.put(`http://localhost:3000/artikels/${data.get('_id')}`, data).then(res => {
+  return dispatch => axios.put(`http://maridakwah:3000/artikels/${data.get('_id')}`, data).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: UPDATE_ARTIKEL, IsData });
@@ -55,7 +55,7 @@ export function updateArtikel(data) {
 
 export function deleteArtikel(id) {
   console.log(id, 'id yang mau di delete');
-  return dispatch => axios.delete(`http://localhost:3000/artikels/${id}`).then(res => {
+  return dispatch => axios.delete(`http://maridakwah:3000/artikels/${id}`).then(res => {
     console.log(res, 'respone dari create');
     dispatch({ type: DELETED_ARTIKEL, id });
   });
@@ -63,7 +63,7 @@ export function deleteArtikel(id) {
 
 export function limitArtikelUmum(limit) {
   console.log(limit, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${limit}/umum`).then(res => {
+  return dispatch => axios.get(`http://maridakwah:3000/artikels/${limit}/umum`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_ARTIKEL, IsData });
@@ -71,7 +71,7 @@ export function limitArtikelUmum(limit) {
 }
 export function limitArtikel(limit, username) {
   console.log(limit, username, 'id yang mau di delete');
-  return dispatch => axios.get(`http://localhost:3000/artikels/${limit}/${username}`).then(res => {
+  return dispatch => axios.get(`http://maridakwah:3000/artikels/${limit}/${username}`).then(res => {
     console.log(res, 'respone dari create');
     const IsData = res.data;
     dispatch({ type: LIMIT_ARTIKEL, IsData });
