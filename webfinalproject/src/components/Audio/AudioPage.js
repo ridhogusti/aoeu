@@ -25,56 +25,22 @@ class AudioPage extends Component {
     return (
       <div>
         <div
-          className="row"
+          style={{
+            background: 'black',
+            marginRight: '8%',
+            marginLeft: '8%',
+            textAlign: 'center',
+          }}
         >
-        
-          <div className="col-1" />
-          <div className="col-10">
-            {/* Carousel Wrapper*/}
-            <div id="carousel-example-1z" className="carousel slide carousel-fade" data-ride="carousel">
-              {/* Indicators*/}
-              <ol className="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to={0} className="active" />
-                <li data-target="#carousel-example-1z" data-slide-to={1} />
-                <li data-target="#carousel-example-1z" data-slide-to={2} />
-              </ol>
-              {/* /.Indicators*/}
-              {/* Slides*/}
-              <div className="carousel-inner" role="listbox">
-                {/* First slide*/}
-                <div className="carousel-item active">
-                  <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide" />
-                </div>
-                {/* /First slide*/}
-                {/* Second slide*/}
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide" />
-                </div>
-                {/* /Second slide*/}
-                {/* Third slide*/}
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide" />
-                </div>
-                {/* /Third slide*/}
-              </div>
-              {/* /.Slides*/}
-              {/* Controls*/}
-              <a className="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true" />
-                <span className="sr-only">Previous</span>
-              </a>
-              <a className="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true" />
-                <span className="sr-only">Next</span>
-              </a>
-              {/* /.Controls*/}
-            </div>
-            {/* /.Carousel Wrapper*/}
 
-          </div>
-
-          <div className="col-1" />
-        </div>
+          <img
+            src="http://3.bp.blogspot.com/-p6dsThHBKPI/VmBN6m6szHI/AAAAAAAABcc/gD96RN0VDOc/s1600/kebaiakan.png"
+            width="70%"
+            style={{
+              justifySelf: 'center',
+            }}
+          />
+        </div> 
 
         <br />
         <div
