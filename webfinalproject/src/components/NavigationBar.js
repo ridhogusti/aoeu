@@ -39,7 +39,7 @@ class NavigationBar extends React.Component {
 
     return (
       <nav className="mb-1 navbar navbar-expand-lg fixed-top navbar-dark teal darken-2 ">
-        <Link to="/" className="navbar-brand">Red Dice</Link>
+        <Link to="/" className="navbar-brand">Mari Dakwah</Link>
         <button
           className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
           aria-expanded="false" aria-label="Toggle navigation"
@@ -62,16 +62,6 @@ class NavigationBar extends React.Component {
             </li>
             <li className={this.state.linkActive === '/ustadz' ? 'nav-item active' : 'nav-item'}>
               <Link to="/ustadz" onClick={() => this.activeLink('/ustadz')} className="nav-link waves-effect waves-light"> List Ustadz </Link>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              >Dropdown</a>
-              <div className="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
-                <a className="dropdown-item waves-effect waves-light" href="javascript">Action</a>
-                <a className="dropdown-item waves-effect waves-light" href="javascript">Another action</a>
-                <a className="dropdown-item waves-effect waves-light" href="javascript">Something else here</a>
-              </div>
             </li>
           </ul>
           { isAuthenticated ? userLinks : guestLinks }

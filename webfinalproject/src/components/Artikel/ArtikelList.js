@@ -17,6 +17,7 @@ class ArtikelList extends Component {
           {/* Card image */}
           <div className="view overlay">
             <img 
+              height="200"
               alt={uriImage}
               className="card-img-top" src={uriImage}
             />
