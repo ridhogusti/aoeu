@@ -23,7 +23,7 @@ class VideoDetail extends Component {
   render() {
     const { location } = this.props;
     console.log(location);
-    const uriImage = `http://localhost:3000/videos/${location.state.video.video}`;
+    const uriImage = `http://maridakwah.com:3000/videos/${location.state.video.video}`;
     const linkCover = 'https://brightplanet.com/wp-content/uploads/2016/04/play-1073616_1280-1030x1030.png';
     return (
       <section className="pt-5 mt-4 pb-3">
